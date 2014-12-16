@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE6D1C3D1A40B40D00642A21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1C3C1A40B40D00642A21 /* AppDelegate.swift */; };
+		CE6D1C3F1A40B40D00642A21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1C3E1A40B40D00642A21 /* ViewController.swift */; };
+		CE6D1C421A40B40D00642A21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6D1C401A40B40D00642A21 /* Main.storyboard */; };
+		CE6D1C441A40B40D00642A21 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6D1C431A40B40D00642A21 /* Images.xcassets */; };
+		CE6D1C471A40B40D00642A21 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6D1C451A40B40D00642A21 /* LaunchScreen.xib */; };
+		CE6D1C531A40B40D00642A21 /* Restaurant_QuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1C521A40B40D00642A21 /* Restaurant_QuizTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE6D1C4D1A40B40D00642A21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE6D1C2F1A40B40D00642A21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE6D1C361A40B40D00642A21;
+			remoteInfo = "Restaurant Quiz";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CE6D1C371A40B40D00642A21 /* Restaurant Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restaurant Quiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE6D1C3B1A40B40D00642A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE6D1C3C1A40B40D00642A21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE6D1C3E1A40B40D00642A21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE6D1C411A40B40D00642A21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE6D1C431A40B40D00642A21 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CE6D1C461A40B40D00642A21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		CE6D1C4C1A40B40D00642A21 /* Restaurant QuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Restaurant QuizTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE6D1C511A40B40D00642A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE6D1C521A40B40D00642A21 /* Restaurant_QuizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant_QuizTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE6D1C341A40B40D00642A21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE6D1C491A40B40D00642A21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE6D1C2E1A40B40D00642A21 = {
+			isa = PBXGroup;
+			children = (
+				CE6D1C391A40B40D00642A21 /* Restaurant Quiz */,
+				CE6D1C4F1A40B40D00642A21 /* Restaurant QuizTests */,
+				CE6D1C381A40B40D00642A21 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE6D1C381A40B40D00642A21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE6D1C371A40B40D00642A21 /* Restaurant Quiz.app */,
+				CE6D1C4C1A40B40D00642A21 /* Restaurant QuizTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE6D1C391A40B40D00642A21 /* Restaurant Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				CE6D1C3C1A40B40D00642A21 /* AppDelegate.swift */,
+				CE6D1C3E1A40B40D00642A21 /* ViewController.swift */,
+				CE6D1C401A40B40D00642A21 /* Main.storyboard */,
+				CE6D1C431A40B40D00642A21 /* Images.xcassets */,
+				CE6D1C451A40B40D00642A21 /* LaunchScreen.xib */,
+				CE6D1C3A1A40B40D00642A21 /* Supporting Files */,
+			);
+			path = "Restaurant Quiz";
+			sourceTree = "<group>";
+		};
+		CE6D1C3A1A40B40D00642A21 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE6D1C3B1A40B40D00642A21 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE6D1C4F1A40B40D00642A21 /* Restaurant QuizTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE6D1C521A40B40D00642A21 /* Restaurant_QuizTests.swift */,
+				CE6D1C501A40B40D00642A21 /* Supporting Files */,
+			);
+			path = "Restaurant QuizTests";
+			sourceTree = "<group>";
+		};
+		CE6D1C501A40B40D00642A21 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE6D1C511A40B40D00642A21 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE6D1C361A40B40D00642A21 /* Restaurant Quiz */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE6D1C561A40B40D00642A21 /* Build configuration list for PBXNativeTarget "Restaurant Quiz" */;
+			buildPhases = (
+				CE6D1C331A40B40D00642A21 /* Sources */,
+				CE6D1C341A40B40D00642A21 /* Frameworks */,
+				CE6D1C351A40B40D00642A21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Restaurant Quiz";
+			productName = "Restaurant Quiz";
+			productReference = CE6D1C371A40B40D00642A21 /* Restaurant Quiz.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE6D1C4B1A40B40D00642A21 /* Restaurant QuizTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE6D1C591A40B40D00642A21 /* Build configuration list for PBXNativeTarget "Restaurant QuizTests" */;
+			buildPhases = (
+				CE6D1C481A40B40D00642A21 /* Sources */,
+				CE6D1C491A40B40D00642A21 /* Frameworks */,
+				CE6D1C4A1A40B40D00642A21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE6D1C4E1A40B40D00642A21 /* PBXTargetDependency */,
+			);
+			name = "Restaurant QuizTests";
+			productName = "Restaurant QuizTests";
+			productReference = CE6D1C4C1A40B40D00642A21 /* Restaurant QuizTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE6D1C2F1A40B40D00642A21 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Dominic Kuang";
+				TargetAttributes = {
+					CE6D1C361A40B40D00642A21 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					CE6D1C4B1A40B40D00642A21 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = CE6D1C361A40B40D00642A21;
+					};
+				};
+			};
+			buildConfigurationList = CE6D1C321A40B40D00642A21 /* Build configuration list for PBXProject "Restaurant Quiz" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE6D1C2E1A40B40D00642A21;
+			productRefGroup = CE6D1C381A40B40D00642A21 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE6D1C361A40B40D00642A21 /* Restaurant Quiz */,
+				CE6D1C4B1A40B40D00642A21 /* Restaurant QuizTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE6D1C351A40B40D00642A21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE6D1C421A40B40D00642A21 /* Main.storyboard in Resources */,
+				CE6D1C471A40B40D00642A21 /* LaunchScreen.xib in Resources */,
+				CE6D1C441A40B40D00642A21 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE6D1C4A1A40B40D00642A21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE6D1C331A40B40D00642A21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE6D1C3F1A40B40D00642A21 /* ViewController.swift in Sources */,
+				CE6D1C3D1A40B40D00642A21 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE6D1C481A40B40D00642A21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE6D1C531A40B40D00642A21 /* Restaurant_QuizTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE6D1C4E1A40B40D00642A21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE6D1C361A40B40D00642A21 /* Restaurant Quiz */;
+			targetProxy = CE6D1C4D1A40B40D00642A21 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CE6D1C401A40B40D00642A21 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE6D1C411A40B40D00642A21 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CE6D1C451A40B40D00642A21 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE6D1C461A40B40D00642A21 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE6D1C541A40B40D00642A21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CE6D1C551A40B40D00642A21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE6D1C571A40B40D00642A21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Restaurant Quiz/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CE6D1C581A40B40D00642A21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Restaurant Quiz/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CE6D1C5A1A40B40D00642A21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Restaurant QuizTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Restaurant Quiz.app/Restaurant Quiz";
+			};
+			name = Debug;
+		};
+		CE6D1C5B1A40B40D00642A21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Restaurant QuizTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Restaurant Quiz.app/Restaurant Quiz";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE6D1C321A40B40D00642A21 /* Build configuration list for PBXProject "Restaurant Quiz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE6D1C541A40B40D00642A21 /* Debug */,
+				CE6D1C551A40B40D00642A21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE6D1C561A40B40D00642A21 /* Build configuration list for PBXNativeTarget "Restaurant Quiz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE6D1C571A40B40D00642A21 /* Debug */,
+				CE6D1C581A40B40D00642A21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CE6D1C591A40B40D00642A21 /* Build configuration list for PBXNativeTarget "Restaurant QuizTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE6D1C5A1A40B40D00642A21 /* Debug */,
+				CE6D1C5B1A40B40D00642A21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE6D1C2F1A40B40D00642A21 /* Project object */;
+}
