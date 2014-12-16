@@ -13,6 +13,7 @@
 		CE6D1C441A40B40D00642A21 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6D1C431A40B40D00642A21 /* Images.xcassets */; };
 		CE6D1C471A40B40D00642A21 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6D1C451A40B40D00642A21 /* LaunchScreen.xib */; };
 		CE6D1C531A40B40D00642A21 /* Restaurant_QuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1C521A40B40D00642A21 /* Restaurant_QuizTests.swift */; };
+		CE6D1C5D1A40BFB800642A21 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6D1C5C1A40BFB800642A21 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		CE6D1C4C1A40B40D00642A21 /* Restaurant QuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Restaurant QuizTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6D1C511A40B40D00642A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6D1C521A40B40D00642A21 /* Restaurant_QuizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant_QuizTests.swift; sourceTree = "<group>"; };
+		CE6D1C5C1A40BFB800642A21 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6D1C5D1A40BFB800642A21 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +62,7 @@
 		CE6D1C2E1A40B40D00642A21 = {
 			isa = PBXGroup;
 			children = (
+				CE6D1C5C1A40BFB800642A21 /* MapKit.framework */,
 				CE6D1C391A40B40D00642A21 /* Restaurant Quiz */,
 				CE6D1C4F1A40B40D00642A21 /* Restaurant QuizTests */,
 				CE6D1C381A40B40D00642A21 /* Products */,
@@ -405,6 +409,7 @@
 				CE6D1C581A40B40D00642A21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE6D1C591A40B40D00642A21 /* Build configuration list for PBXNativeTarget "Restaurant QuizTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				CE6D1C5B1A40B40D00642A21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
