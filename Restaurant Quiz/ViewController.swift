@@ -14,10 +14,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceLabel: UILabel!
     
+    let winningDistance = 100.0
+    
     var current: MKAnnotation?
     var previous: MKAnnotation?
     var overlays: [MKOverlay]
-    var destination: MKPointAnnotation
+    var destination: MKMapItem?
     var restaurants: [MKMapItem]
     
     var distanceFormatter: MKDistanceFormatter {
@@ -38,7 +40,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     required init(coder aDecoder: NSCoder) {
         overlays = []
-        destination = MKPointAnnotation()
         restaurants = []
         super.init(coder: aDecoder)
     }
@@ -55,7 +56,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let vanPlaceMark = MKPlacemark(coordinate: van, addressDictionary: nil)
         let vanMapItem = MKMapItem(placemark: vanPlaceMark)
         
-        destination.coordinate = van
+        destination = vanMapItem
         
         let region = MKCoordinateRegionMakeWithDistance(ladner, 1000, 1000)
         mapView.region = region
@@ -97,7 +98,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     
-    // MARK: - MKMapView
+    // MARK: - MKMapViewDelegate
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         if overlay is MKPolyline {
             let polyRenderer = MKPolylineRenderer(overlay: overlay)
@@ -114,22 +115,35 @@ class ViewController: UIViewController, MKMapViewDelegate {
             let mapCoord = mapView.convertPoint(gr.locationInView(mapView), toCoordinateFromView: mapView)
             mapView.removeAnnotation(previous)
             previous = current
+            
+            panCameraTo(mapCoord)
+            
             let dir = directionsToNewPoint(MKMapItem(placemark: MKPlacemark(coordinate: mapCoord, addressDictionary: nil)))
             dir.calculateDirectionsWithCompletionHandler(drawRoute)
-            current = addAnnotation(mapCoord)
+            
+            let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: mapCoord, addressDictionary: nil))
+            current = addAnnotation(mapItem)
+            
+            if distanceBetweenPoints(destination!.placemark.coordinate, p2: mapCoord) <= winningDistance {
+                endGame()
+            }
         }
         
     }
     
     /** Adds an annotation to the map, including the distance to destination */
-    func addAnnotation(coord: CLLocationCoordinate2D) -> MKAnnotation {
+    func addAnnotation(coord: MKMapItem) -> MKAnnotation {
         let point = MKPointAnnotation()
-        point.coordinate = coord
+        point.coordinate = coord.placemark.coordinate
         mapView.addAnnotation(point)
         
-        let dist = distanceBetweenPoints(destination.coordinate, p2: point.coordinate)
+        let dist = distanceBetweenPoints(destination!.placemark.coordinate, p2: point.coordinate)
         
-        point.title = "\(distanceFormatter.stringFromDistance(dist))"
+        if dist >= winningDistance {
+            point.title = "\(distanceFormatter.stringFromDistance(dist))"
+        } else {
+            point.title = "\(coord.name)"
+        }
         return point
     }
     
@@ -153,7 +167,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             annotationView!.annotation = annotation
         }
         
-        let dist = distanceBetweenPoints(annotation.coordinate, p2: destination.coordinate)
+        let dist = distanceBetweenPoints(annotation.coordinate, p2: destination!.placemark.coordinate)
         annotationView!.hue = colourGradientFromDistanceRemaining(dist)
         annotationView!.setNeedsDisplay()
         return annotationView
@@ -184,12 +198,27 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     /** Start a new round of the game */
     func startNewRound(destinationRestaurant: MKMapItem, forCity city: DDCity) {
+        destination = destinationRestaurant
         panCameraTo(city)
+    }
+    
+    func endGame() {
+        let alert = UIAlertController(title: "Congratulations!", message: "You have won after travelling \(distanceFormatter.stringFromDistance(distance)).", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+            (alertAction: UIAlertAction!) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     /** Animates the camera to the given city */
     func panCameraTo(city: DDCity) {
         let camera = city.cameraFromCity()
+        mapView.setCamera(camera, animated: true)
+    }
+    
+    func panCameraTo(loc: CLLocationCoordinate2D) {
+        let camera = MKMapCamera(lookingAtCenterCoordinate: loc, fromEyeCoordinate: loc, eyeAltitude: 2000)
         mapView.setCamera(camera, animated: true)
     }
 }
