@@ -63,6 +63,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         self.mapView.addGestureRecognizer(tapRecognizer)
     }
     
+    /** Returns the directions to point, starting from the most recent pin, if any */
     func directionsToNewPoint(point: MKMapItem) -> MKDirections {
         // First pin dropped
         if current == nil {
@@ -81,6 +82,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         return MKDirections(request: directionRequest)
     }
     
+    /** Convenience method to convert an annotation to a MKMapItem */
     func mapItemFrom(#annotation: MKAnnotation) -> MKMapItem {
         return MKMapItem(placemark: MKPlacemark(coordinate: annotation.coordinate, addressDictionary: nil))
     }
@@ -117,6 +119,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+    /** Adds an annotation to the map, including the distance to destination */
     func addAnnotation(coord: CLLocationCoordinate2D) -> MKAnnotation {
         let point = MKPointAnnotation()
         point.coordinate = coord
@@ -137,7 +140,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         return dist
     }
     
-    @IBOutlet weak var some: UIImageView!
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("ColourAnnotationView") as? ColourAnnotationView
         
@@ -155,6 +157,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         return annotationView
     }
     
+    /** Returns a float representing a colour between red and green, scaling linearly from 0 to 3000 respectively */
     func colourGradientFromDistanceRemaining(distance: CLLocationDistance) -> Float {
         if distance >= 3000 {
             return 0

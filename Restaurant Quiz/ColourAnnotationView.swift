@@ -20,7 +20,6 @@ class ColourAnnotationView: MKAnnotationView {
         self.backgroundColor = UIColor.clearColor()
         self.centerOffset = CGPoint(x: 2, y: -15)
         self.calloutOffset = CGPoint(x: -8, y: 0)
-
     }
     
     override init!(annotation: MKAnnotation!, reuseIdentifier: String!) {
