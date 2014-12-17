@@ -18,6 +18,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     var previous: MKAnnotation?
     var overlays: [MKOverlay]
     var destination: MKPointAnnotation
+    var restaurants: [MKMapItem]
     
     var distanceFormatter: MKDistanceFormatter {
         struct Static {
@@ -38,6 +39,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     required init(coder aDecoder: NSCoder) {
         overlays = []
         destination = MKPointAnnotation()
+        restaurants = []
         super.init(coder: aDecoder)
     }
     
@@ -163,6 +165,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
             return 0
         }
         return Float(M_PI - (M_PI * distance / 3000))
+    }
+    
+    /** Called when city is selected in DDCityViewController */
+    func getRestaurantsInCity(city: DDCity) {
+        let searchRequest = MKLocalSearchRequest()
+        searchRequest.naturalLanguageQuery = "Restaurants"
+        searchRequest.region = city.regionFromCity()
+        
+        let search = MKLocalSearch(request: searchRequest)
+        search.startWithCompletionHandler({
+            [unowned self] (response: MKLocalSearchResponse!, error: NSError!) in
+            self.restaurants = response.mapItems as [MKMapItem]
+        })
     }
     
 }

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2bU-4Q-LVz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -59,7 +60,7 @@
                                     </barButtonItem>
                                     <barButtonItem title="Search" id="KqY-zz-Rbc">
                                         <connections>
-                                            <segue destination="fHo-1B-PiV" kind="show" id="4LW-V3-2Gx"/>
+                                            <segue destination="fHo-1B-PiV" kind="show" identifier="Search" id="4LW-V3-2Gx"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Scores" id="gGI-TR-jGb">
@@ -104,23 +105,47 @@
             </objects>
             <point key="canvasLocation" x="302" y="1068"/>
         </scene>
-        <!--View Controller-->
+        <!--City View Controller-->
         <scene sceneID="I1G-wd-qd3">
             <objects>
-                <viewController id="fHo-1B-PiV" sceneMemberID="viewController">
+                <viewController id="fHo-1B-PiV" customClass="DDCityViewController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PW6-J1-Nid"/>
                         <viewControllerLayoutGuide type="bottom" id="iJ7-FQ-UQN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Vla-R7-ghT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a city to select restaurants from" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzT-4Y-R4y">
+                                <rect key="frame" x="38" y="72" width="306" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D4a-nF-nJ7">
+                                <rect key="frame" x="0.0" y="101" width="375" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fHo-1B-PiV" id="7uj-Dw-jhl"/>
+                                    <outlet property="delegate" destination="fHo-1B-PiV" id="096-T4-3lQ"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="D4a-nF-nJ7" secondAttribute="trailing" id="3mx-vE-qhg"/>
+                            <constraint firstItem="D4a-nF-nJ7" firstAttribute="top" secondItem="yzT-4Y-R4y" secondAttribute="bottom" constant="8" id="Ogh-Oc-eZE"/>
+                            <constraint firstItem="yzT-4Y-R4y" firstAttribute="top" secondItem="PW6-J1-Nid" secondAttribute="bottom" constant="8" id="W3j-ok-n1I"/>
+                            <constraint firstItem="D4a-nF-nJ7" firstAttribute="leading" secondItem="Vla-R7-ghT" secondAttribute="leadingMargin" id="aq0-uv-tRb"/>
+                            <constraint firstAttribute="centerX" secondItem="yzT-4Y-R4y" secondAttribute="centerX" constant="-3.5" id="cpN-ih-2h0"/>
+                        </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Na-gx-mhr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="631" y="1068"/>
+            <point key="canvasLocation" x="630.5" y="1067.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="I5h-jk-LaU">
