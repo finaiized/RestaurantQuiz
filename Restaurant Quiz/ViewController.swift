@@ -177,8 +177,20 @@ class ViewController: UIViewController, MKMapViewDelegate {
         search.startWithCompletionHandler({
             [unowned self] (response: MKLocalSearchResponse!, error: NSError!) in
             self.restaurants = response.mapItems as [MKMapItem]
+            let rand = Int(arc4random_uniform(UInt32(self.restaurants.count)))
+            self.startNewRound(self.restaurants[rand], forCity: city)
         })
     }
     
+    /** Start a new round of the game */
+    func startNewRound(destinationRestaurant: MKMapItem, forCity city: DDCity) {
+        panCameraTo(city)
+    }
+    
+    /** Animates the camera to the given city */
+    func panCameraTo(city: DDCity) {
+        let camera = city.cameraFromCity()
+        mapView.setCamera(camera, animated: true)
+    }
 }
 
