@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE4C06B31A41334C00ABF3A3 /* ColourAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C06B21A41334C00ABF3A3 /* ColourAnnotationView.swift */; };
 		CE6D1C3D1A40B40D00642A21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1C3C1A40B40D00642A21 /* AppDelegate.swift */; };
 		CE6D1C3F1A40B40D00642A21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1C3E1A40B40D00642A21 /* ViewController.swift */; };
 		CE6D1C421A40B40D00642A21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6D1C401A40B40D00642A21 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE4C06B21A41334C00ABF3A3 /* ColourAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourAnnotationView.swift; sourceTree = "<group>"; };
 		CE6D1C371A40B40D00642A21 /* Restaurant Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restaurant Quiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6D1C3B1A40B40D00642A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6D1C3C1A40B40D00642A21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				CE6D1C431A40B40D00642A21 /* Images.xcassets */,
 				CE6D1C451A40B40D00642A21 /* LaunchScreen.xib */,
 				CE6D1C3A1A40B40D00642A21 /* Supporting Files */,
+				CE4C06B21A41334C00ABF3A3 /* ColourAnnotationView.swift */,
 			);
 			path = "Restaurant Quiz";
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4C06B31A41334C00ABF3A3 /* ColourAnnotationView.swift in Sources */,
 				CE6D1C3F1A40B40D00642A21 /* ViewController.swift in Sources */,
 				CE6D1C3D1A40B40D00642A21 /* AppDelegate.swift in Sources */,
 			);

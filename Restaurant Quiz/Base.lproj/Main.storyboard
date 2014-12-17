@@ -35,7 +35,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0000 km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLx-ir-fT0">
-                                        <rect key="frame" x="116" y="27" width="45" height="21"/>
+                                        <rect key="frame" x="116" y="27" width="102" height="21"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -78,7 +78,9 @@
                     <navigationItem key="navigationItem" id="7zv-0w-gyn"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="distanceLabel" destination="mLx-ir-fT0" id="Kdf-69-THZ"/>
                         <outlet property="mapView" destination="G46-U1-0a0" id="fla-Sw-ANj"/>
+                        <outlet property="some" destination="Kqh-ea-ZT7" id="0Bq-zx-RQk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
