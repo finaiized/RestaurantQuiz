@@ -15,6 +15,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var distanceLabel: UILabel!
     
     let winningDistance = 100.0
+    var playing: Bool = false
     
     var current: MKAnnotation?
     var previous: MKAnnotation?
@@ -49,18 +50,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         mapView.delegate = self
         
-        let ladner = CLLocationCoordinate2D(latitude: 49.081241, longitude: -123.083793)
-        let ladnerPlaceMark = MKPlacemark(coordinate: ladner, addressDictionary: nil)
-        let ladnerMapItem = MKMapItem(placemark: ladnerPlaceMark)
-        let van = CLLocationCoordinate2D(latitude: 49.266638, longitude: -123.249275)
-        let vanPlaceMark = MKPlacemark(coordinate: van, addressDictionary: nil)
-        let vanMapItem = MKMapItem(placemark: vanPlaceMark)
-        
-        destination = vanMapItem
-        
-        let region = MKCoordinateRegionMakeWithDistance(ladner, 1000, 1000)
-        mapView.region = region
-        
         let tapRecognizer = UILongPressGestureRecognizer(target: self, action: "handleMapTouch:")
         tapRecognizer.minimumPressDuration = 0.5
         self.mapView.addGestureRecognizer(tapRecognizer)
@@ -94,6 +83,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func drawRoute(response: MKDirectionsResponse!, error: NSError!) {
         let route = response.routes[0] as MKRoute
         distance += route.distance
+        overlays.append(route.polyline)
         self.mapView.addOverlay(route.polyline, level: MKOverlayLevel.AboveRoads)
     }
     
@@ -111,7 +101,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: -
     func handleMapTouch(gr: UITapGestureRecognizer) {
-        if gr.state == UIGestureRecognizerState.Began {
+        if gr.state == UIGestureRecognizerState.Began && playing {
             let mapCoord = mapView.convertPoint(gr.locationInView(mapView), toCoordinateFromView: mapView)
             mapView.removeAnnotation(previous)
             previous = current
@@ -142,7 +132,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if dist >= winningDistance {
             point.title = "\(distanceFormatter.stringFromDistance(dist))"
         } else {
-            point.title = "\(coord.name)"
+            point.title = "\(destination!.name)"
         }
         return point
     }
@@ -193,13 +183,27 @@ class ViewController: UIViewController, MKMapViewDelegate {
             self.restaurants = response.mapItems as [MKMapItem]
             let rand = Int(arc4random_uniform(UInt32(self.restaurants.count)))
             self.startNewRound(self.restaurants[rand], forCity: city)
+            NSLog("\(self.restaurants[rand].name)")
         })
     }
     
     /** Start a new round of the game */
     func startNewRound(destinationRestaurant: MKMapItem, forCity city: DDCity) {
+        playing = true
+        resetMapState()
         destination = destinationRestaurant
         panCameraTo(city)
+    }
+    
+    /** Reset the map and markers to an unplayed state */
+    func resetMapState() {
+        mapView.removeAnnotations(mapView.annotations)
+        current = nil
+        previous = nil
+        mapView.removeOverlays(overlays)
+        overlays = []
+        distance = 0
+        destination = nil
     }
     
     func endGame() {
@@ -208,6 +212,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             (alertAction: UIAlertAction!) in
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
+        playing = false
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
