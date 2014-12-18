@@ -14,8 +14,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceLabel: UILabel!
     
+    // The distance, from the destination, considered to be close enough
     let winningDistance = 100.0
+    
     var playing: Bool = false
+    
+    // The height which the camera must be under
+    let maximumEyeLevel: CLLocationDistance = 2000
     
     var current: MKAnnotation?
     var previous: MKAnnotation?
@@ -222,8 +227,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.setCamera(camera, animated: true)
     }
     
+    /** Animates the camera to a certain location, setting the height automatically */
     func panCameraTo(loc: CLLocationCoordinate2D) {
-        let camera = MKMapCamera(lookingAtCenterCoordinate: loc, fromEyeCoordinate: loc, eyeAltitude: 2000)
+        // Pan to maximumEyeLevel if too zoomed out, otherwise, leave the altitude alone
+        let camera = MKMapCamera(lookingAtCenterCoordinate: loc, fromEyeCoordinate: loc, eyeAltitude: min(maximumEyeLevel, mapView.camera.altitude))
         mapView.setCamera(camera, animated: true)
     }
 }
