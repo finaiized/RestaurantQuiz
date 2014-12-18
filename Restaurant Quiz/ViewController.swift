@@ -111,7 +111,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             mapView.removeAnnotation(previous)
             previous = current
             
-            panCameraTo(mapCoord)
+            panCameraTo(mapCoord, heading: CLLocationDegrees(arc4random_uniform(360)))
             
             let dir = directionsToNewPoint(MKMapItem(placemark: MKPlacemark(coordinate: mapCoord, addressDictionary: nil)))
             dir.calculateDirectionsWithCompletionHandler(drawRoute)
@@ -188,7 +188,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             self.restaurants = response.mapItems as [MKMapItem]
             let rand = Int(arc4random_uniform(UInt32(self.restaurants.count)))
             self.startNewRound(self.restaurants[rand], forCity: city)
-            NSLog("\(self.restaurants[rand].name)")
+            NSLog("Destination: \(self.restaurants[rand].name)")
         })
     }
     
@@ -228,9 +228,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     /** Animates the camera to a certain location, setting the height automatically */
-    func panCameraTo(loc: CLLocationCoordinate2D) {
+    func panCameraTo(loc: CLLocationCoordinate2D, heading: CLLocationDegrees = 0) {
         // Pan to maximumEyeLevel if too zoomed out, otherwise, leave the altitude alone
         let camera = MKMapCamera(lookingAtCenterCoordinate: loc, fromEyeCoordinate: loc, eyeAltitude: min(maximumEyeLevel, mapView.camera.altitude))
+        camera.heading = heading
         mapView.setCamera(camera, animated: true)
     }
 }
