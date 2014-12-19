@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5664803FFEC1D79CCFA946C1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1232FB65B57F6EBDF0AD1622 /* libPods.a */; };
 		CE4C06B31A41334C00ABF3A3 /* ColourAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C06B21A41334C00ABF3A3 /* ColourAnnotationView.swift */; };
 		CE6D1C3D1A40B40D00642A21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1C3C1A40B40D00642A21 /* AppDelegate.swift */; };
 		CE6D1C3F1A40B40D00642A21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1C3E1A40B40D00642A21 /* ViewController.swift */; };
@@ -30,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1232FB65B57F6EBDF0AD1622 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		13008D2A0EEB473FC5D895AF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7E8738D929269782DCD9F12C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4C06B21A41334C00ABF3A3 /* ColourAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourAnnotationView.swift; sourceTree = "<group>"; };
 		CE6D1C371A40B40D00642A21 /* Restaurant Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restaurant Quiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6D1C3B1A40B40D00642A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,6 +46,7 @@
 		CE6D1C511A40B40D00642A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6D1C521A40B40D00642A21 /* Restaurant_QuizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant_QuizTests.swift; sourceTree = "<group>"; };
 		CE6D1C5C1A40BFB800642A21 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CE7BFF301A44B82600AC3130 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		CEDB769E1A41FD9800F0C16D /* DDCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCity.swift; sourceTree = "<group>"; };
 		CEDB76A01A4201A800F0C16D /* DDCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6D1C5D1A40BFB800642A21 /* MapKit.framework in Frameworks */,
+				5664803FFEC1D79CCFA946C1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +71,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		945F6E1038E6909D43C548D1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E8738D929269782DCD9F12C /* Pods.debug.xcconfig */,
+				13008D2A0EEB473FC5D895AF /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9D30DFFD9A702BE4565F0BB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1232FB65B57F6EBDF0AD1622 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE6D1C2E1A40B40D00642A21 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +95,8 @@
 				CE6D1C391A40B40D00642A21 /* Restaurant Quiz */,
 				CE6D1C4F1A40B40D00642A21 /* Restaurant QuizTests */,
 				CE6D1C381A40B40D00642A21 /* Products */,
+				945F6E1038E6909D43C548D1 /* Pods */,
+				9D30DFFD9A702BE4565F0BB7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +121,7 @@
 				CE4C06B21A41334C00ABF3A3 /* ColourAnnotationView.swift */,
 				CEDB769E1A41FD9800F0C16D /* DDCity.swift */,
 				CEDB76A01A4201A800F0C16D /* DDCityViewController.swift */,
+				CE7BFF301A44B82600AC3130 /* Bridging-Header.h */,
 			);
 			path = "Restaurant Quiz";
 			sourceTree = "<group>";
@@ -132,9 +158,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE6D1C561A40B40D00642A21 /* Build configuration list for PBXNativeTarget "Restaurant Quiz" */;
 			buildPhases = (
+				4964ED9F3C660865FACCB788 /* Check Pods Manifest.lock */,
 				CE6D1C331A40B40D00642A21 /* Sources */,
 				CE6D1C341A40B40D00642A21 /* Frameworks */,
 				CE6D1C351A40B40D00642A21 /* Resources */,
+				1114844B424886D1FBB79639 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,6 +247,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1114844B424886D1FBB79639 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4964ED9F3C660865FACCB788 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE6D1C331A40B40D00642A21 /* Sources */ = {
@@ -350,21 +411,25 @@
 		};
 		CE6D1C571A40B40D00642A21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E8738D929269782DCD9F12C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Restaurant Quiz/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Restaurant Quiz/Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		CE6D1C581A40B40D00642A21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13008D2A0EEB473FC5D895AF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Restaurant Quiz/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Restaurant Quiz/Bridging-Header.h";
 			};
 			name = Release;
 		};
