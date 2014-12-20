@@ -56,7 +56,7 @@ struct Restaurant {
                                 dispatch_group_enter(group)
                                 
                                 let geocoder = CLGeocoder()
-                                geocoder.geocodeAddressString("\(address), \(city), \(stateCode), \(country)", completionHandler: {
+                                geocoder.geocodeAddressString("\(address), \(cityString), \(stateCode), \(country)", completionHandler: {
                                     (placemark: [AnyObject]!, err: NSError!) in
                                     
                                     let place = placemark[0] as CLPlacemark
