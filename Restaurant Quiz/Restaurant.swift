@@ -12,16 +12,16 @@ import CoreLocation
 struct Restaurant {
     var name: String
     var categories: [String]
-    var location: CLLocationCoordinate2D
+    var coordinate: CLLocationCoordinate2D
     
     var description: String {
-        return "\(name) includes category \(categories[0]) at \(location.latitude), \(location.longitude)"
+        return "\(name) includes category \(categories[0]) at \(coordinate.latitude), \(coordinate.longitude)"
     }
     
     init(name: String, categories: [String], location: CLLocationCoordinate2D) {
         self.name = name
         self.categories = categories
-        self.location = location
+        self.coordinate = location
     }
     
     /** Given data returned from a Yelp Search request, return an array of Restaurant. Runs async. */

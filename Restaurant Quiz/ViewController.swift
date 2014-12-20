@@ -25,8 +25,8 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     var current: MKAnnotation?
     var previous: MKAnnotation?
     var overlays: [MKOverlay]
-    var destination: MKMapItem?
-    var restaurants: [MKMapItem]
+    var destination: Restaurant?
+    var restaurants: [Restaurant]
     
     var distanceFormatter: MKDistanceFormatter {
         struct Static {
@@ -48,18 +48,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         overlays = []
         restaurants = []
         super.init(coder: aDecoder)
-        let r = TDOAuth.URLRequestForPath("/v2/search", GETParameters: ["term": "restaurants", "location": "vancouver"], host: "api.yelp.com", consumerKey: "ZObdp8qJ-ImZZzxegBePdA", consumerSecret: "4rVrs3jq0VhVeDPhLXIIQ_x3338", accessToken: "Nwgk0--aXjyjAC4Z8SISYb8wohaXioqs", tokenSecret: "WmjZ_x2JRk-0Jiw7632BKqOlBxM")
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        session.dataTaskWithRequest(r, completionHandler: {
-            (data: NSData!, resp: NSURLResponse!, err: NSError!) in
-            Restaurant.restaurantsFromYelpJSON(data, completion: {
-                (restaurants: [Restaurant]) in
-                for restaurant in restaurants {
-                    NSLog("\(restaurant.description)")
-                }
-            })
-        }).resume()
-        
     }
     
     override func viewDidLoad() {
@@ -131,7 +119,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
             let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: mapCoord, addressDictionary: nil))
             current = addAnnotation(mapItem)
             
-            if distanceBetweenPoints(destination!.placemark.coordinate, p2: mapCoord) <= winningDistance {
+            if distanceBetweenPoints(destination!.coordinate, p2: mapCoord) <= winningDistance {
                 endGame()
             }
         }
@@ -144,7 +132,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         point.coordinate = coord.placemark.coordinate
         mapView.addAnnotation(point)
         
-        let dist = distanceBetweenPoints(destination!.placemark.coordinate, p2: point.coordinate)
+        let dist = distanceBetweenPoints(destination!.coordinate, p2: point.coordinate)
         
         if dist >= winningDistance {
             point.title = "\(distanceFormatter.stringFromDistance(dist))"
@@ -174,7 +162,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
             annotationView!.annotation = annotation
         }
         
-        let dist = distanceBetweenPoints(annotation.coordinate, p2: destination!.placemark.coordinate)
+        let dist = distanceBetweenPoints(annotation.coordinate, p2: destination!.coordinate)
         annotationView!.hue = colourGradientFromDistanceRemaining(dist)
         annotationView!.setNeedsDisplay()
         return annotationView
@@ -190,22 +178,19 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     
     /** Called when city is selected in DDCityViewController */
     func getRestaurantsInCity(city: DDCity) {
-        let searchRequest = MKLocalSearchRequest()
-        searchRequest.naturalLanguageQuery = "Restaurants"
-        searchRequest.region = city.regionFromCity()
-        
-        let search = MKLocalSearch(request: searchRequest)
-        search.startWithCompletionHandler({
-            [unowned self] (response: MKLocalSearchResponse!, error: NSError!) in
-            self.restaurants = response.mapItems as [MKMapItem]
-            let rand = Int(arc4random_uniform(UInt32(self.restaurants.count)))
-            self.startNewRound(self.restaurants[rand], forCity: city)
-            NSLog("Destination: \(self.restaurants[rand].name)")
+        Yelp.restaurantsFromCity(city.rawValue, completion: {
+            (data: NSData) in
+            Restaurant.restaurantsFromYelpJSON(data, completion: {
+                (restaurants: [Restaurant]) in
+                    self.restaurants = restaurants
+                    let rand = Int(arc4random_uniform(UInt32(self.restaurants.count)))
+                    self.startNewRound(self.restaurants[rand], forCity: city)
+            })
         })
     }
     
     /** Start a new round of the game */
-    func startNewRound(destinationRestaurant: MKMapItem, forCity city: DDCity) {
+    func startNewRound(destinationRestaurant: Restaurant, forCity city: DDCity) {
         playing = true
         resetMapState()
         destination = destinationRestaurant
