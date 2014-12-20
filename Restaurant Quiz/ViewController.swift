@@ -60,6 +60,11 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         self.mapView.addGestureRecognizer(tapRecognizer)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     /** Returns the directions to point, starting from the most recent pin, if any */
     func directionsToNewPoint(point: MKMapItem) -> MKDirections {
         // First pin dropped
