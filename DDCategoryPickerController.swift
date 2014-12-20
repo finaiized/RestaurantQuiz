@@ -9,7 +9,7 @@
 import UIKit
 
 class DDCategoryPickerController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
-    var categories: [String]?
+    var categories: [String] = [String]()
     var selectedRow = 0
     
     override func viewDidLoad() {
@@ -27,12 +27,12 @@ class DDCategoryPickerController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categories!.count
+        return categories.count
     }
     
     // MARK: - UIPickerViewDelegate
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return categories![row]
+        return categories[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -42,7 +42,7 @@ class DDCategoryPickerController: UIViewController, UIPickerViewDelegate, UIPick
     func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
         if viewController is ViewController {
             let vc = viewController as ViewController
-            vc.getRestaurantsInCategory(categories![selectedRow])
+            vc.getRestaurantsInCategory(categories[selectedRow])
         }
     }
 

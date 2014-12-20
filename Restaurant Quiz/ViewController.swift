@@ -255,14 +255,14 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
             if id == "Category" {
                 let cpvc = segue.destinationViewController as DDCategoryPickerController
                 
-                var categories = [String]()
+                var categories = NSMutableSet()
                 for r in restaurants {
                     for c in r.categories {
-                        categories.append(c)
+                        categories.addObject(c)
                     }
                 }
                 
-                cpvc.categories = categories
+                cpvc.categories = categories.allObjects as [String]
             }
         }
     }
