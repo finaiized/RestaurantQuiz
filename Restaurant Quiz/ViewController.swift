@@ -48,14 +48,16 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         overlays = []
         restaurants = []
         super.init(coder: aDecoder)
-        let r = TDOAuth.URLRequestForPath("/v2/search", GETParameters: ["term": "restaurants", "location": "vancouver"], host: "api.yelp.com", consumerKey: "ZObdp8qJ-ImZZzxegBePdA"
-            , consumerSecret: "4rVrs3jq0VhVeDPhLXIIQ_x3338"
-            , accessToken: "Nwgk0--aXjyjAC4Z8SISYb8wohaXioqs"
-, tokenSecret: "WmjZ_x2JRk-0Jiw7632BKqOlBxM")
+        let r = TDOAuth.URLRequestForPath("/v2/search", GETParameters: ["term": "restaurants", "location": "vancouver"], host: "api.yelp.com", consumerKey: "ZObdp8qJ-ImZZzxegBePdA", consumerSecret: "4rVrs3jq0VhVeDPhLXIIQ_x3338", accessToken: "Nwgk0--aXjyjAC4Z8SISYb8wohaXioqs", tokenSecret: "WmjZ_x2JRk-0Jiw7632BKqOlBxM")
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         session.dataTaskWithRequest(r, completionHandler: {
             (data: NSData!, resp: NSURLResponse!, err: NSError!) in
-            let k = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: nil)
+            Restaurant.restaurantsFromYelpJSON(data, completion: {
+                (restaurants: [Restaurant]) in
+                for restaurant in restaurants {
+                    NSLog("\(restaurant.description)")
+                }
+            })
         }).resume()
         
     }
