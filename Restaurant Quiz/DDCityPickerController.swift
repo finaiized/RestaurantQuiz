@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DDCityViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
+class DDCityPickerController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
     var selectedRow: Int = 0
     
     override func viewDidLoad() {

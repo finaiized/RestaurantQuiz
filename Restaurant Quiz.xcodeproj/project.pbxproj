@@ -20,7 +20,7 @@
 		CECDBC061A4537C100AAE0EB /* Yelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDBC051A4537C100AAE0EB /* Yelp.swift */; };
 		CECDBC081A454AF900AAE0EB /* DDCategoryPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDBC071A454AF900AAE0EB /* DDCategoryPickerController.swift */; };
 		CEDB769F1A41FD9800F0C16D /* DDCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB769E1A41FD9800F0C16D /* DDCity.swift */; };
-		CEDB76A11A4201A800F0C16D /* DDCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB76A01A4201A800F0C16D /* DDCityViewController.swift */; };
+		CEDB76A11A4201A800F0C16D /* DDCityPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB76A01A4201A800F0C16D /* DDCityPickerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		CECDBC051A4537C100AAE0EB /* Yelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yelp.swift; sourceTree = "<group>"; };
 		CECDBC071A454AF900AAE0EB /* DDCategoryPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DDCategoryPickerController.swift; path = ../DDCategoryPickerController.swift; sourceTree = "<group>"; };
 		CEDB769E1A41FD9800F0C16D /* DDCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCity.swift; sourceTree = "<group>"; };
-		CEDB76A01A4201A800F0C16D /* DDCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCityViewController.swift; sourceTree = "<group>"; };
+		CEDB76A01A4201A800F0C16D /* DDCityPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCityPickerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +127,7 @@
 				CE6D1C3A1A40B40D00642A21 /* Supporting Files */,
 				CE4C06B21A41334C00ABF3A3 /* ColourAnnotationView.swift */,
 				CEDB769E1A41FD9800F0C16D /* DDCity.swift */,
-				CEDB76A01A4201A800F0C16D /* DDCityViewController.swift */,
+				CEDB76A01A4201A800F0C16D /* DDCityPickerController.swift */,
 				CE7BFF301A44B82600AC3130 /* Bridging-Header.h */,
 				CE7BFF311A451A7900AC3130 /* Restaurant.swift */,
 				CECDBC051A4537C100AAE0EB /* Yelp.swift */,
@@ -296,7 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEDB769F1A41FD9800F0C16D /* DDCity.swift in Sources */,
-				CEDB76A11A4201A800F0C16D /* DDCityViewController.swift in Sources */,
+				CEDB76A11A4201A800F0C16D /* DDCityPickerController.swift in Sources */,
 				CE7BFF321A451A7900AC3130 /* Restaurant.swift in Sources */,
 				CE4C06B31A41334C00ABF3A3 /* ColourAnnotationView.swift in Sources */,
 				CE6D1C3F1A40B40D00642A21 /* ViewController.swift in Sources */,

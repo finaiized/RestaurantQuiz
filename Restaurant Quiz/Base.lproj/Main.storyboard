@@ -129,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="156" y="1039"/>
         </scene>
-        <!--City View Controller-->
+        <!--City Picker Controller-->
         <scene sceneID="I1G-wd-qd3">
             <objects>
-                <viewController id="fHo-1B-PiV" customClass="DDCityViewController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fHo-1B-PiV" customClass="DDCityPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PW6-J1-Nid"/>
                         <viewControllerLayoutGuide type="bottom" id="iJ7-FQ-UQN"/>
