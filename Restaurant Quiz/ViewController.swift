@@ -183,23 +183,40 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     
     /** Called when city is selected in DDCityViewController */
     func getRestaurantsInCity(city: DDCity) {
-        Yelp.restaurantsFromCity(city.rawValue, completion: {
+        Yelp.restaurantsFromCity(city, completion: {
             (data: NSData) in
-            Restaurant.restaurantsFromYelpJSON(data, completion: {
+            Restaurant.restaurantsFromYelpJSON(data, forCity: city, completion: {
                 (restaurants: [Restaurant]) in
                     self.restaurants = restaurants
                     let rand = Int(arc4random_uniform(UInt32(self.restaurants.count)))
-                    self.startNewRound(self.restaurants[rand], forCity: city)
+                    self.startNewRound(self.restaurants[rand])
             })
         })
     }
     
+    /** Called when category is selected in DDCategoryPickerController */
+    func getRestaurantsInCategory(cat: String) {
+        var restaurantsInCategory = [Restaurant]()
+        for res in self.restaurants {
+            for c in res.categories {
+                if c == cat {
+                    restaurantsInCategory.append(res)
+                }
+            }
+        }
+        
+        let rand = Int(arc4random_uniform(UInt32(restaurantsInCategory.count)))
+        let restaurant = restaurantsInCategory[rand]
+        
+       self.startNewRound(restaurant)
+    }
+    
     /** Start a new round of the game */
-    func startNewRound(destinationRestaurant: Restaurant, forCity city: DDCity) {
+    func startNewRound(destinationRestaurant: Restaurant) {
         playing = true
         resetMapState()
         destination = destinationRestaurant
-        panCameraTo(city)
+        panCameraTo(destinationRestaurant.city)
     }
     
     /** Reset the map and markers to an unplayed state */
@@ -235,6 +252,23 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         let camera = MKMapCamera(lookingAtCenterCoordinate: loc, fromEyeCoordinate: loc, eyeAltitude: min(maximumEyeLevel, mapView.camera.altitude))
         camera.heading = heading
         mapView.setCamera(camera, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let id = segue.identifier {
+            if id == "Category" {
+                let cpvc = segue.destinationViewController as DDCategoryPickerController
+                
+                var categories = NSMutableSet()
+                for r in restaurants {
+                    for c in r.categories {
+                        categories.addObject(c)
+                    }
+                }
+                
+                cpvc.categories = categories.allObjects as [String]
+            }
+        }
     }
 }
 
