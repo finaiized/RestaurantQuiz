@@ -189,6 +189,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         })
     }
     
+    /** Called when category is selected in DDCategoryPickerController */
     func getRestaurantsInCategory(cat: String) {
         var restaurantsInCategory = [Restaurant]()
         for res in self.restaurants {
@@ -198,9 +199,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
                 }
             }
         }
-        if restaurantsInCategory.count == 0 {
-            return
-        }
+        
         let rand = Int(arc4random_uniform(UInt32(restaurantsInCategory.count)))
         let restaurant = restaurantsInCategory[rand]
         

@@ -9,6 +9,10 @@
 import UIKit
 
 class DDCategoryPickerController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var helpLabel: UILabel!
+    
     var categories: [String] = [String]()
     var selectedRow = 0
     
@@ -18,6 +22,11 @@ class DDCategoryPickerController: UIViewController, UIPickerViewDelegate, UIPick
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationItem.title = "Select Category"
         self.navigationController?.delegate = self
+        
+        if categories.count == 0 {
+            pickerView.removeFromSuperview()
+            helpLabel.text = "You must search first"
+        }
 
     }
     
@@ -40,6 +49,10 @@ class DDCategoryPickerController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        if categories.count == 0 {
+            return
+        }
+        
         if viewController is ViewController {
             let vc = viewController as ViewController
             vc.getRestaurantsInCategory(categories[selectedRow])
