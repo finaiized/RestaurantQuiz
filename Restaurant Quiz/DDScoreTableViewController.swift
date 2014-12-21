@@ -8,13 +8,16 @@
 
 import UIKit
 
-class DDScoreTableViewController: UITableViewController {
+class DDScoreTableViewController: UITableViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.title = "Recent Scores"
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationItem.title = "Select Category"
+        self.navigationController?.delegate = self
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,8 +37,7 @@ class DDScoreTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
         // Configure the cell...
         cell.textLabel?.text = "\(ScoreTracker.sharedInstance.getScores()[indexPath.row])"
 

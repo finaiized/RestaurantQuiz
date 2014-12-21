@@ -85,6 +85,9 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
                 
                 cpvc.categories = categories.allObjects as [String]
             }
+            if id == "Scores" {
+                NSLog(">???")
+            }
         }
     }
     
@@ -96,6 +99,8 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         resetGameState()
         destination = destinationRestaurant
         panCameraTo(destinationRestaurant.city)
+        ScoreTracker.sharedInstance.addScore(5)
+        
     }
 
     func endGame() {
