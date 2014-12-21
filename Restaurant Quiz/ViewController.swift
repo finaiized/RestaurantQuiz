@@ -47,6 +47,8 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         }
     }
     
+    var score: Int = 1000
+    
     // MARK: - Lifecycle Methods
     required init(coder aDecoder: NSCoder) {
         overlays = []
@@ -91,7 +93,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     /** Start a new round of the game */
     func startNewRound(destinationRestaurant: Restaurant) {
         playing = true
-        resetMapState()
+        resetGameState()
         destination = destinationRestaurant
         panCameraTo(destinationRestaurant.city)
     }
@@ -106,6 +108,20 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         self.presentViewController(alert, animated: true, completion: nil)
         mapView.removeAnnotations(mapView.annotations)
         addAnnotation(destination!)
+        ScoreTracker.sharedInstance.addScore(score)
+    }
+    
+    
+    /** Reset the map and markers to an unplayed state */
+    func resetGameState() {
+        mapView.removeAnnotations(mapView.annotations)
+        current = nil
+        previous = nil
+        mapView.removeOverlays(overlays)
+        overlays = []
+        distance = 0
+        destination = nil
+        score = 0
     }
     
     // MARK: - Restaurant Methods
@@ -245,17 +261,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
 
 
     // MARK: - MapView Helpers
-    
-    /** Reset the map and markers to an unplayed state */
-    func resetMapState() {
-        mapView.removeAnnotations(mapView.annotations)
-        current = nil
-        previous = nil
-        mapView.removeOverlays(overlays)
-        overlays = []
-        distance = 0
-        destination = nil
-    }
     
     /** Animates the camera to the given city */
     func panCameraTo(city: DDCity) {
