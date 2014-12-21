@@ -14,8 +14,9 @@ class DDScoreTableViewController: UITableViewController, UINavigationControllerD
         super.viewDidLoad()
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationItem.title = "Select Category"
+        self.navigationItem.title = "Recent Scores"
         self.navigationController?.delegate = self
+        tableView.rowHeight = 44
         
     }
 
@@ -39,9 +40,14 @@ class DDScoreTableViewController: UITableViewController, UINavigationControllerD
         let cell = tableView.dequeueReusableCellWithIdentifier("ScoreTableViewCell", forIndexPath: indexPath) as ScoreTableViewCell
         let score = ScoreTracker.sharedInstance.getScores()[indexPath.row]
         cell.scoreLabel.text = "\(score)"
-        
         if score == ScoreTracker.sharedInstance.highestScore() {
             cell.scoreView.backgroundColor = UIColor.greenColor()
+        }
+        
+        let attempts = ScoreTracker.sharedInstance.getAttempts()[indexPath.row]
+        cell.attemptsLabel.text = "\(attempts)"
+        if attempts == ScoreTracker.sharedInstance.minimumAttempts() {
+            cell.attemptsView.backgroundColor = UIColor.greenColor()
         }
         
         return cell

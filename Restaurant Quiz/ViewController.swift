@@ -46,6 +46,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
             distanceLabel.text = "\(distanceFormatter.stringFromDistance(distance))"
         }
     }
+    var attempts: Int = 0
     
     var score: Int = 1000
     
@@ -99,8 +100,13 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         resetGameState()
         destination = destinationRestaurant
         panCameraTo(destinationRestaurant.city)
-        ScoreTracker.sharedInstance.addScore(5)
-        ScoreTracker.sharedInstance.addScore(3)
+        ScoreTracker.sharedInstance.addScore(5, attempts: 3)
+        ScoreTracker.sharedInstance.addScore(4, attempts: 10)
+        ScoreTracker.sharedInstance.addScore(3, attempts: 2)
+        ScoreTracker.sharedInstance.addScore(15, attempts: 6)
+        ScoreTracker.sharedInstance.addScore(3, attempts: 4)
+        ScoreTracker.sharedInstance.addScore(2, attempts: 5)
+        ScoreTracker.sharedInstance.addScore(15, attempts: 8)
         
     }
 
@@ -114,7 +120,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         self.presentViewController(alert, animated: true, completion: nil)
         mapView.removeAnnotations(mapView.annotations)
         addAnnotation(destination!)
-        ScoreTracker.sharedInstance.addScore(score)
+        ScoreTracker.sharedInstance.addScore(score, attempts: attempts)
     }
     
     
@@ -128,6 +134,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         distance = 0
         destination = nil
         score = 0
+        attempts = 0
     }
     
     // MARK: - Restaurant Methods
@@ -253,6 +260,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
             
             let dir = directionsToNewPoint(MKMapItem(placemark: MKPlacemark(coordinate: mapCoord, addressDictionary: nil)))
             dir.calculateDirectionsWithCompletionHandler(drawRoute)
+            attempts++
             
             if distanceBetweenPoints(destination!.coordinate, p2: mapCoord) >= winningDistance {
                 let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: mapCoord, addressDictionary: nil))

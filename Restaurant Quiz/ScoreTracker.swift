@@ -17,17 +17,24 @@ class ScoreTracker: NSObject {
     }
     
     private var scores: Stack<Int>
+    private var attempts: Stack<Int>
     
     private override init() {
         scores = Stack(size: 5)
+        attempts = Stack(size: 5)
     }
     
-    func addScore(score: Int) {
+    func addScore(score: Int, attempts: Int) {
         scores.enqueue(score)
+        self.attempts.enqueue(attempts)
     }
     
     func getScores() -> [Int] {
         return scores.toArray()
+    }
+    
+    func getAttempts() -> [Int] {
+        return attempts.toArray()
     }
     
     func highestScore() -> Int {
@@ -38,5 +45,15 @@ class ScoreTracker: NSObject {
             }
         }
         return highestScore
+    }
+    
+    func minimumAttempts() -> Int {
+        var minAttempts = Int(INT_MAX)
+        for attempt in getAttempts() {
+            if attempt < minAttempts {
+                minAttempts = attempt
+            }
+        }
+        return minAttempts
     }
 }
