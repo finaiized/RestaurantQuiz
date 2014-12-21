@@ -29,4 +29,14 @@ class ScoreTracker: NSObject {
     func getScores() -> [Int] {
         return scores.toArray()
     }
+    
+    func highestScore() -> Int {
+        var highestScore = 0
+        for score in getScores() {
+            if score > highestScore {
+                highestScore = score
+            }
+        }
+        return highestScore
+    }
 }

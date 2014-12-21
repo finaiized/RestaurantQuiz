@@ -37,9 +37,13 @@ class DDScoreTableViewController: UITableViewController, UINavigationControllerD
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ScoreTableViewCell", forIndexPath: indexPath) as ScoreTableViewCell
-        // Configure the cell...
-        cell.scoreLabel.text = "\(ScoreTracker.sharedInstance.getScores()[indexPath.row])"
-
+        let score = ScoreTracker.sharedInstance.getScores()[indexPath.row]
+        cell.scoreLabel.text = "\(score)"
+        
+        if score == ScoreTracker.sharedInstance.highestScore() {
+            cell.scoreView.backgroundColor = UIColor.greenColor()
+        }
+        
         return cell
     }
     

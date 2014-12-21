@@ -100,6 +100,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         destination = destinationRestaurant
         panCameraTo(destinationRestaurant.city)
         ScoreTracker.sharedInstance.addScore(5)
+        ScoreTracker.sharedInstance.addScore(3)
         
     }
 
