@@ -121,10 +121,10 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
             let dir = directionsToNewPoint(MKMapItem(placemark: MKPlacemark(coordinate: mapCoord, addressDictionary: nil)))
             dir.calculateDirectionsWithCompletionHandler(drawRoute)
             
-            let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: mapCoord, addressDictionary: nil))
-            current = addAnnotation(mapItem)
-            
-            if distanceBetweenPoints(destination!.coordinate, p2: mapCoord) <= winningDistance {
+            if distanceBetweenPoints(destination!.coordinate, p2: mapCoord) >= winningDistance {
+                let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: mapCoord, addressDictionary: nil))
+                current = addAnnotation(mapItem)
+            } else {
                 endGame()
             }
         }
@@ -139,11 +139,15 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         
         let dist = distanceBetweenPoints(destination!.coordinate, p2: point.coordinate)
         
-        if dist >= winningDistance {
-            point.title = "\(distanceFormatter.stringFromDistance(dist))"
-        } else {
-            point.title = "\(destination!.name)"
-        }
+        point.title = "\(distanceFormatter.stringFromDistance(dist))"
+        return point
+    }
+    
+    /** Adds an annotation at the restaurant, including its name */
+    func addAnnotation(restaurant: Restaurant) -> MKAnnotation {
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: restaurant.coordinate, addressDictionary: nil))
+        let point = addAnnotation(mapItem) as MKPointAnnotation
+        point.title = restaurant.name
         return point
     }
     
@@ -187,9 +191,9 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
             (data: NSData) in
             Restaurant.restaurantsFromYelpJSON(data, forCity: city, completion: {
                 (restaurants: [Restaurant]) in
-                    self.restaurants = restaurants
-                    let rand = Int(arc4random_uniform(UInt32(self.restaurants.count)))
-                    self.startNewRound(self.restaurants[rand])
+                self.restaurants = restaurants
+                let rand = Int(arc4random_uniform(UInt32(self.restaurants.count)))
+                self.startNewRound(self.restaurants[rand])
             })
         })
     }
@@ -208,7 +212,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         let rand = Int(arc4random_uniform(UInt32(restaurantsInCategory.count)))
         let restaurant = restaurantsInCategory[rand]
         
-       self.startNewRound(restaurant)
+        self.startNewRound(restaurant)
     }
     
     /** Start a new round of the game */
@@ -238,6 +242,8 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         }))
         playing = false
         self.presentViewController(alert, animated: true, completion: nil)
+        mapView.removeAnnotations(mapView.annotations)
+        addAnnotation(destination!)
     }
     
     /** Animates the camera to the given city */
