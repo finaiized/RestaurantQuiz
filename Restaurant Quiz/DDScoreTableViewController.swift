@@ -16,7 +16,6 @@ class DDScoreTableViewController: UITableViewController, UINavigationControllerD
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationItem.title = "Select Category"
         self.navigationController?.delegate = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         
     }
 
@@ -37,9 +36,9 @@ class DDScoreTableViewController: UITableViewController, UINavigationControllerD
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ScoreTableViewCell", forIndexPath: indexPath) as ScoreTableViewCell
         // Configure the cell...
-        cell.textLabel?.text = "\(ScoreTracker.sharedInstance.getScores()[indexPath.row])"
+        cell.scoreLabel.text = "\(ScoreTracker.sharedInstance.getScores()[indexPath.row])"
 
         return cell
     }

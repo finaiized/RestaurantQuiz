@@ -21,6 +21,7 @@
 		CECDBC061A4537C100AAE0EB /* Yelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDBC051A4537C100AAE0EB /* Yelp.swift */; };
 		CECDBC081A454AF900AAE0EB /* DDCategoryPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDBC071A454AF900AAE0EB /* DDCategoryPickerController.swift */; };
 		CECDBC0A1A46818500AAE0EB /* DDScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDBC091A46818500AAE0EB /* DDScoreTableViewController.swift */; };
+		CED07FFF1A478B0D005FD91C /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED07FFE1A478B0D005FD91C /* ScoreTableViewCell.swift */; };
 		CEDB769F1A41FD9800F0C16D /* DDCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB769E1A41FD9800F0C16D /* DDCity.swift */; };
 		CEDB76A11A4201A800F0C16D /* DDCityPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB76A01A4201A800F0C16D /* DDCityPickerController.swift */; };
 		CEFE0E711A4695AF002713B6 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE0E701A4695AF002713B6 /* Stack.swift */; };
@@ -58,6 +59,7 @@
 		CECDBC051A4537C100AAE0EB /* Yelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yelp.swift; sourceTree = "<group>"; };
 		CECDBC071A454AF900AAE0EB /* DDCategoryPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DDCategoryPickerController.swift; path = ../DDCategoryPickerController.swift; sourceTree = "<group>"; };
 		CECDBC091A46818500AAE0EB /* DDScoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDScoreTableViewController.swift; sourceTree = "<group>"; };
+		CED07FFE1A478B0D005FD91C /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
 		CEDB769E1A41FD9800F0C16D /* DDCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCity.swift; sourceTree = "<group>"; };
 		CEDB76A01A4201A800F0C16D /* DDCityPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCityPickerController.swift; sourceTree = "<group>"; };
 		CEFE0E701A4695AF002713B6 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				CECDBC091A46818500AAE0EB /* DDScoreTableViewController.swift */,
 				CEBCB82C1A4683A00045B249 /* ScoreTracker.swift */,
 				CEFE0E701A4695AF002713B6 /* Stack.swift */,
+				CED07FFE1A478B0D005FD91C /* ScoreTableViewCell.swift */,
 			);
 			path = "Restaurant Quiz";
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				CE6D1C3D1A40B40D00642A21 /* AppDelegate.swift in Sources */,
 				CECDBC0A1A46818500AAE0EB /* DDScoreTableViewController.swift in Sources */,
 				CECDBC081A454AF900AAE0EB /* DDCategoryPickerController.swift in Sources */,
+				CED07FFF1A478B0D005FD91C /* ScoreTableViewCell.swift in Sources */,
 				CECDBC061A4537C100AAE0EB /* Yelp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

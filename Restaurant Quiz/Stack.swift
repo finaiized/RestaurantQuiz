@@ -41,7 +41,6 @@ public class Stack<T: Equatable> {
         var temp = [T]()
         for i in 0..<size {
             let k = dequeue()
-            NSLog("\(k)")
             if let k = k {
                 temp.append(k)
             }
