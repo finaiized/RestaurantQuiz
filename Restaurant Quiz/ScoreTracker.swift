@@ -16,17 +16,17 @@ class ScoreTracker: NSObject {
         return Static.instance
     }
     
-    private var scores: [Int]
+    private var scores: Stack<Int>
     
     private override init() {
-        scores = [Int]()
+        scores = Stack(size: 5)
     }
     
     func addScore(score: Int) {
-        // TODO: Use a linked list?
-        if scores.count >= 5 {
-            scores.removeLast()
-            
-        }
+        scores.enqueue(score)
+    }
+    
+    func getScores() -> [Int] {
+        return scores.toArray()
     }
 }

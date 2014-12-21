@@ -18,12 +18,12 @@
 		CE6D1C5D1A40BFB800642A21 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6D1C5C1A40BFB800642A21 /* MapKit.framework */; };
 		CE7BFF321A451A7900AC3130 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BFF311A451A7900AC3130 /* Restaurant.swift */; };
 		CEBCB82D1A4683A00045B249 /* ScoreTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCB82C1A4683A00045B249 /* ScoreTracker.swift */; };
-		CEBCB82F1A4688560045B249 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCB82E1A4688560045B249 /* LinkedList.swift */; };
 		CECDBC061A4537C100AAE0EB /* Yelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDBC051A4537C100AAE0EB /* Yelp.swift */; };
 		CECDBC081A454AF900AAE0EB /* DDCategoryPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDBC071A454AF900AAE0EB /* DDCategoryPickerController.swift */; };
 		CECDBC0A1A46818500AAE0EB /* DDScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDBC091A46818500AAE0EB /* DDScoreTableViewController.swift */; };
 		CEDB769F1A41FD9800F0C16D /* DDCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB769E1A41FD9800F0C16D /* DDCity.swift */; };
 		CEDB76A11A4201A800F0C16D /* DDCityPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB76A01A4201A800F0C16D /* DDCityPickerController.swift */; };
+		CEFE0E711A4695AF002713B6 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE0E701A4695AF002713B6 /* Stack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +55,12 @@
 		CE7BFF301A44B82600AC3130 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		CE7BFF311A451A7900AC3130 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		CEBCB82C1A4683A00045B249 /* ScoreTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTracker.swift; sourceTree = "<group>"; };
-		CEBCB82E1A4688560045B249 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		CECDBC051A4537C100AAE0EB /* Yelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yelp.swift; sourceTree = "<group>"; };
 		CECDBC071A454AF900AAE0EB /* DDCategoryPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DDCategoryPickerController.swift; path = ../DDCategoryPickerController.swift; sourceTree = "<group>"; };
 		CECDBC091A46818500AAE0EB /* DDScoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDScoreTableViewController.swift; sourceTree = "<group>"; };
 		CEDB769E1A41FD9800F0C16D /* DDCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCity.swift; sourceTree = "<group>"; };
 		CEDB76A01A4201A800F0C16D /* DDCityPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCityPickerController.swift; sourceTree = "<group>"; };
+		CEFE0E701A4695AF002713B6 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +139,7 @@
 				CECDBC051A4537C100AAE0EB /* Yelp.swift */,
 				CECDBC091A46818500AAE0EB /* DDScoreTableViewController.swift */,
 				CEBCB82C1A4683A00045B249 /* ScoreTracker.swift */,
-				CEBCB82E1A4688560045B249 /* LinkedList.swift */,
+				CEFE0E701A4695AF002713B6 /* Stack.swift */,
 			);
 			path = "Restaurant Quiz";
 			sourceTree = "<group>";
@@ -307,13 +307,13 @@
 				CEDB769F1A41FD9800F0C16D /* DDCity.swift in Sources */,
 				CEDB76A11A4201A800F0C16D /* DDCityPickerController.swift in Sources */,
 				CE7BFF321A451A7900AC3130 /* Restaurant.swift in Sources */,
+				CEFE0E711A4695AF002713B6 /* Stack.swift in Sources */,
 				CEBCB82D1A4683A00045B249 /* ScoreTracker.swift in Sources */,
 				CE4C06B31A41334C00ABF3A3 /* ColourAnnotationView.swift in Sources */,
 				CE6D1C3F1A40B40D00642A21 /* ViewController.swift in Sources */,
 				CE6D1C3D1A40B40D00642A21 /* AppDelegate.swift in Sources */,
 				CECDBC0A1A46818500AAE0EB /* DDScoreTableViewController.swift in Sources */,
 				CECDBC081A454AF900AAE0EB /* DDCategoryPickerController.swift in Sources */,
-				CEBCB82F1A4688560045B249 /* LinkedList.swift in Sources */,
 				CECDBC061A4537C100AAE0EB /* Yelp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
