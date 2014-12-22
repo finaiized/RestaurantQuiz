@@ -16,7 +16,7 @@ class DDScoreTableViewController: UITableViewController {
         
         if tableView.numberOfRowsInSection(0) == 0 {
             let backgroundView = UIView(frame: tableView.frame)
-            let label = UILabel(frame: CGRect(x: 10, y: 100, width: tableView.frame.width - 10, height: 20))
+            let label = UILabel(frame: CGRect(x: 10, y: 100, width: tableView.frame.width - 15, height: 20))
             label.lineBreakMode = NSLineBreakMode.ByWordWrapping
             label.numberOfLines = 0
             label.textAlignment = NSTextAlignment.Center
