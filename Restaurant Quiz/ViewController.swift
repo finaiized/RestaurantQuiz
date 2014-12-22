@@ -30,7 +30,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     var previous: MKAnnotation?
     var overlays: [MKOverlay]
     var destination: Restaurant?
-    var restaurants: [Restaurant]
     
     var distanceFormatter: MKDistanceFormatter {
         struct Static {
@@ -62,7 +61,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     // MARK: - Lifecycle Methods
     required init(coder aDecoder: NSCoder) {
         overlays = []
-        restaurants = []
         score = maxScore
         super.init(coder: aDecoder)
     }
@@ -81,24 +79,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let id = segue.identifier {
-            if id == "Category" {
-                let cpvc = segue.destinationViewController as DDCategoryPickerController
-                
-                var categories = NSMutableSet()
-                for r in restaurants {
-                    for c in r.categories {
-                        categories.addObject(c)
-                    }
-                }
-                
-                cpvc.categories = categories.allObjects as [String]
-            }
-        }
     }
     
     // MARK: - Game Methods
@@ -151,38 +131,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         destination = nil
         score = maxScore
         attempts = 0
-    }
-    
-    // MARK: - Restaurant Methods
-    
-    /** Called when city is selected in DDCityViewController */
-    func getRestaurantsInCity(city: DDCity) {
-        Yelp.restaurantsFromCity(city, completion: {
-            (data: NSData) in
-            Restaurant.restaurantsFromYelpJSON(data, forCity: city, completion: {
-                (restaurants: [Restaurant]) in
-                self.restaurants = restaurants
-                let rand = Int(arc4random_uniform(UInt32(self.restaurants.count)))
-                self.startNewRound(self.restaurants[rand])
-            })
-        })
-    }
-    
-    /** Called when category is selected in DDCategoryPickerController */
-    func getRestaurantsInCategory(cat: String) {
-        var restaurantsInCategory = [Restaurant]()
-        for res in self.restaurants {
-            for c in res.categories {
-                if c == cat {
-                    restaurantsInCategory.append(res)
-                }
-            }
-        }
-        
-        let rand = Int(arc4random_uniform(UInt32(restaurantsInCategory.count)))
-        let restaurant = restaurantsInCategory[rand]
-        
-        self.startNewRound(restaurant)
     }
     
     // MARK: - Routing Methods

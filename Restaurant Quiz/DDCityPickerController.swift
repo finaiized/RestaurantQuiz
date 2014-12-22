@@ -8,46 +8,34 @@
 
 import UIKit
 
-class DDCityPickerController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
-    var selectedRow: Int = 0
+class DDCityPickerController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationItem.title = "Select City"
-        self.navigationController?.delegate = self
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - UIPickerViewDataSource
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    // MARK: - Table view data source
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DDCity.allValues.count
     }
     
-    // MARK: - UIPickerViewDelegate
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return DDCity.allValues[row].rawValue
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
+       
+        cell.textLabel?.text = DDCity.allValues[indexPath.row].rawValue
+        return cell
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedRow = row
-    }
-    
-    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-        if viewController is ViewController {
-            let vc = viewController as ViewController
-            vc.getRestaurantsInCity(DDCity.allValues[selectedRow])
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let cpc = segue.destinationViewController as? DDCategoryPickerController {
+            let indexPath = self.tableView.indexPathForSelectedRow()
+            let selectedCity = DDCity.allValues[indexPath!.row]
+            cpc.city = selectedCity
         }
     }
-
 }

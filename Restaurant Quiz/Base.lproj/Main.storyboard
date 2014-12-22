@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Restaurant Quiz-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,26 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Q9-Bk-mcI">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem title="Category" id="wdb-pg-44O">
-                                        <connections>
-                                            <segue destination="A7K-xg-XTu" kind="show" identifier="Category" id="wbf-eL-P3l"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Search" id="KqY-zz-Rbc">
-                                        <connections>
-                                            <segue destination="fHo-1B-PiV" kind="show" identifier="Search" id="4LW-V3-2Gx"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Scores" id="gGI-TR-jGb">
-                                        <connections>
-                                            <segue destination="61F-0C-u3u" kind="show" id="ga1-po-akR"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="G46-U1-0a0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                             </mapView>
@@ -73,7 +53,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7zv-0w-gyn"/>
+                    <navigationItem key="navigationItem" title="Restaurant Quiz" id="7zv-0w-gyn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="9wY-Vw-nwH">
+                            <connections>
+                                <segue destination="pL5-z0-t8x" kind="show" identifier="Search" id="job-Ue-OmH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="distanceLabel" destination="mLx-ir-fT0" id="Kdf-69-THZ"/>
@@ -85,101 +71,118 @@
             </objects>
             <point key="canvasLocation" x="602" y="358"/>
         </scene>
-        <!--Category Picker Controller-->
-        <scene sceneID="jmb-9c-Bbv">
+        <!--Select City-->
+        <scene sceneID="liW-8k-loy">
             <objects>
-                <viewController id="A7K-xg-XTu" customClass="DDCategoryPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Select City" id="pL5-z0-t8x" customClass="DDCityPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gDp-bN-BCM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" id="GbK-uY-Bw4">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GbK-uY-Bw4" id="2yC-Gc-ZvH">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="p3p-Q5-zdg" kind="show" identifier="Category" id="0Gu-07-zsi"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pL5-z0-t8x" id="ORY-5r-TBp"/>
+                            <outlet property="delegate" destination="pL5-z0-t8x" id="l4d-Zh-SJX"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RCt-HG-AIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1159" y="358"/>
+        </scene>
+        <!--Select Category-->
+        <scene sceneID="Vkx-Iq-h2T">
+            <objects>
+                <tableViewController title="Select Category" id="p3p-Q5-zdg" customClass="DDCategoryPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kX3-ka-Wd2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" id="WgS-wH-8sh">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WgS-wH-8sh" id="a68-sd-4Sb">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="8rn-lh-wrq" kind="show" id="5KD-nD-NUL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="p3p-Q5-zdg" id="Kc1-HV-ODy"/>
+                            <outlet property="delegate" destination="p3p-Q5-zdg" id="J4v-Aj-Fgi"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Khu-vS-iOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1402" y="1074"/>
+        </scene>
+        <!--Pre Game View Controller-->
+        <scene sceneID="Vsn-J5-CAR">
+            <objects>
+                <viewController id="8rn-lh-wrq" customClass="PreGameViewController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7be-lC-1Pn"/>
-                        <viewControllerLayoutGuide type="bottom" id="u1V-DZ-lce"/>
+                        <viewControllerLayoutGuide type="top" id="NkU-di-khP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gax-az-FHp"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OLv-xz-xkB">
+                    <view key="view" contentMode="scaleToFill" id="rfe-9n-SUL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8X-Ee-Vq7">
-                                <rect key="frame" x="87" y="77" width="146" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Yelp" translatesAutoresizingMaskIntoConstraints="NO" id="Eh4-IX-Qh2">
+                                <rect key="frame" x="237" y="515" width="67" height="33"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="powered by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30v-pd-B2G">
+                                <rect key="frame" x="141" y="527" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Er3-Ux-sRf">
-                                <rect key="frame" x="0.0" y="106" width="320" height="162"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSo-TK-y8c">
+                                <rect key="frame" x="141" y="246" width="33" height="30"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <outlet property="dataSource" destination="A7K-xg-XTu" id="L3d-jM-onV"/>
-                                    <outlet property="delegate" destination="A7K-xg-XTu" id="vug-pi-QGV"/>
+                                    <action selector="startGame:" destination="8rn-lh-wrq" eventType="touchUpInside" id="Dvk-M9-KgZ"/>
                                 </connections>
-                            </pickerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Yelp" translatesAutoresizingMaskIntoConstraints="NO" id="vLD-Jx-awK">
-                                <rect key="frame" x="254" y="523" width="50" height="25"/>
-                            </imageView>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We're getting (CATEGORY) restaurants in (CITY)" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Es9-3m-rve">
+                                <rect key="frame" x="16" y="64" width="288" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="c8X-Ee-Vq7" firstAttribute="top" secondItem="7be-lC-1Pn" secondAttribute="bottom" constant="13" id="NEf-am-HOP"/>
-                            <constraint firstAttribute="centerX" secondItem="c8X-Ee-Vq7" secondAttribute="centerX" id="buE-ti-JGr"/>
-                        </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="helpLabel" destination="c8X-Ee-Vq7" id="mtX-J8-hdh"/>
-                        <outlet property="pickerView" destination="Er3-Ux-sRf" id="EHd-9l-1FS"/>
+                        <outlet property="descriptionLabel" destination="Es9-3m-rve" id="9uH-0d-a8f"/>
+                        <outlet property="startButton" destination="iSo-TK-y8c" id="nuT-Ly-E6r"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q0M-6z-FBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dWV-ZA-i0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="156" y="1039"/>
-        </scene>
-        <!--City Picker Controller-->
-        <scene sceneID="I1G-wd-qd3">
-            <objects>
-                <viewController id="fHo-1B-PiV" customClass="DDCityPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PW6-J1-Nid"/>
-                        <viewControllerLayoutGuide type="bottom" id="iJ7-FQ-UQN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Vla-R7-ghT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a city to select restaurants from" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzT-4Y-R4y">
-                                <rect key="frame" x="11" y="72" width="306" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D4a-nF-nJ7">
-                                <rect key="frame" x="16" y="101" width="288" height="162"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="fHo-1B-PiV" id="7uj-Dw-jhl"/>
-                                    <outlet property="delegate" destination="fHo-1B-PiV" id="096-T4-3lQ"/>
-                                </connections>
-                            </pickerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Yelp" translatesAutoresizingMaskIntoConstraints="NO" id="MSB-aB-rHR">
-                                <rect key="frame" x="254" y="523" width="50" height="25"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="D4a-nF-nJ7" secondAttribute="trailing" id="3mx-vE-qhg"/>
-                            <constraint firstItem="D4a-nF-nJ7" firstAttribute="top" secondItem="yzT-4Y-R4y" secondAttribute="bottom" constant="8" id="Ogh-Oc-eZE"/>
-                            <constraint firstItem="yzT-4Y-R4y" firstAttribute="top" secondItem="PW6-J1-Nid" secondAttribute="bottom" constant="8" id="W3j-ok-n1I"/>
-                            <constraint firstItem="D4a-nF-nJ7" firstAttribute="leading" secondItem="Vla-R7-ghT" secondAttribute="leadingMargin" id="aq0-uv-tRb"/>
-                            <constraint firstAttribute="centerX" secondItem="yzT-4Y-R4y" secondAttribute="centerX" constant="-3.5" id="cpN-ih-2h0"/>
-                        </constraints>
-                    </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Na-gx-mhr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="602" y="1039"/>
+            <point key="canvasLocation" x="1877" y="1117"/>
         </scene>
         <!--Score Table View Controller-->
         <scene sceneID="dam-K4-Rzz">
             <objects>
                 <tableViewController id="61F-0C-u3u" customClass="DDScoreTableViewController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xmf-EK-uYw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -188,10 +191,10 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0hT-iw-9bS" id="EWh-lr-n6S">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HIg-kl-xUd">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HIg-kl-xUd">
                                             <rect key="frame" x="0.0" y="1" width="160" height="43"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lv7-j8-daM">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lv7-j8-daM">
                                                     <rect key="frame" x="60" y="12" width="40" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -204,10 +207,10 @@
                                                 <constraint firstAttribute="centerX" secondItem="Lv7-j8-daM" secondAttribute="centerX" id="dO7-O5-IoB"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Id-u8-PgE">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Id-u8-PgE">
                                             <rect key="frame" x="160" y="1" width="160" height="43"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tL-Nz-fGa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tL-Nz-fGa">
                                                     <rect key="frame" x="60" y="12" width="40" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -256,12 +259,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tga-K6-1gf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1085" y="1037"/>
+            <point key="canvasLocation" x="784" y="1066"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="i6K-xQ-k0X">
             <objects>
-                <navigationController navigationBarHidden="YES" id="2bU-4Q-LVz" sceneMemberID="viewController">
+                <navigationController id="2bU-4Q-LVz" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eQ1-QQ-63W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

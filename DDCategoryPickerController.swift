@@ -8,55 +8,36 @@
 
 import UIKit
 
-class DDCategoryPickerController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
+class DDCategoryPickerController: UITableViewController {
     
-    @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var helpLabel: UILabel!
-    
-    var categories: [String] = [String]()
-    var selectedRow = 0
+    var city: DDCity!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationItem.title = "Select Category"
-        self.navigationController?.delegate = self
-        
-        if categories.count == 0 {
-            pickerView.removeFromSuperview()
-            helpLabel.text = "You must search first"
-        }
-
     }
     
-    // MARK: - UIPickerViewDataSource
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    // MARK: - Table view data source
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categories.count
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DDCategory.allValues.count
     }
     
-    // MARK: - UIPickerViewDelegate
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return categories[row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedRow = row
-    }
-    
-    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-        if categories.count == 0 {
-            return
-        }
-        
-        if viewController is ViewController {
-            let vc = viewController as ViewController
-            vc.getRestaurantsInCategory(categories[selectedRow])
-        }
-    }
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
 
+        cell.textLabel?.text = DDCategory.allValues[indexPath.row].rawValue
+        return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let pgvc = segue.destinationViewController as? PreGameViewController {
+            let indexPath = tableView.indexPathForSelectedRow()
+            let category = DDCategory.allValues[indexPath!.row]
+            pgvc.searchParams = (city: city, category: category)
+        }
+    }
 }
