@@ -17,6 +17,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var infoViewBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
     
@@ -87,10 +88,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         infoView.layer.shadowPath = shadowPath.CGPath
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     // MARK: - Game Methods
     
     /** Start a new round of the game */
@@ -99,9 +96,10 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         resetGameState()
         destination = destinationRestaurant
         panCameraTo(destinationRestaurant.city)
-        timer = NSTimer(timeInterval: 1, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
+        timer = NSTimer(timeInterval: 1.5, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
         restaurantLabel.text = destination!.name
         NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        popUpInfoView()
         ScoreTracker.sharedInstance.addScore(5, attempts: 3)
         ScoreTracker.sharedInstance.addScore(4, attempts: 10)
         ScoreTracker.sharedInstance.addScore(3, attempts: 2)
@@ -115,7 +113,17 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     func tickScore(timer: NSTimer) {
         score = Int(Float(score) * 0.99)
     }
-
+    
+    /** Show the info view with an animation */
+    func popUpInfoView() {
+        infoViewBottomConstraint.constant = 0
+        infoView.setNeedsUpdateConstraints()
+        UIView.animateWithDuration(0.8, delay: 0, options: .CurveEaseOut, animations: {
+            [unowned self] in
+            self.infoView.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
     func endGame() {
         let alert = UIAlertController(title: "Congratulations!", message: "You have won after travelling \(distanceFormatter.stringFromDistance(distance)).", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
@@ -247,8 +255,8 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         
     }
     
-
-
+    
+    
     // MARK: - MapView Helpers
     
     /** Animates the camera to the given city */
