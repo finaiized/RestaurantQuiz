@@ -108,7 +108,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         destination = destinationRestaurant
         panCameraTo(destinationRestaurant.city)
         timer = NSTimer(timeInterval: 1, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
-        NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSDefaultRunLoopMode)
+        NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
         ScoreTracker.sharedInstance.addScore(5, attempts: 3)
         ScoreTracker.sharedInstance.addScore(4, attempts: 10)
         ScoreTracker.sharedInstance.addScore(3, attempts: 2)
