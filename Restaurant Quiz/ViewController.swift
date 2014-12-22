@@ -212,7 +212,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         if distance >= 3000 {
             return 0
         }
-        return Float(M_PI - (M_PI * distance / 3000))
+        return Float(2.19 - (2.19 * distance / 3000))
     }
     
     /** Convenience method to convert an annotation to a MKMapItem */
