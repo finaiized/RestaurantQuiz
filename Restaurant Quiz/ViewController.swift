@@ -76,6 +76,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         tapRecognizer.minimumPressDuration = 0.5
         self.mapView.addGestureRecognizer(tapRecognizer)
         self.mapView.showsPointsOfInterest = false
+        
     }
     
     override func viewWillAppear(animated: Bool) {
