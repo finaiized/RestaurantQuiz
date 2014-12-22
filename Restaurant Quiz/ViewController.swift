@@ -15,6 +15,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var infoView: UIView!
     
     // MARK: - Properties
     
@@ -75,6 +76,13 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         self.mapView.addGestureRecognizer(tapRecognizer)
         self.mapView.showsPointsOfInterest = false
         
+        let shadowPath = UIBezierPath(rect: infoView.bounds)
+        infoView.layer.masksToBounds = false
+        infoView.layer.shadowColor = UIColor.blackColor().CGColor
+        infoView.layer.shadowOffset = CGSizeMake(0, 0.5)
+        infoView.layer.shadowOpacity = 0.5
+        infoView.layer.shadowPath = shadowPath.CGPath
+
     }
     
     override func viewWillAppear(animated: Bool) {
