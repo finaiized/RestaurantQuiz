@@ -12,10 +12,6 @@ class DDCategoryPickerController: UITableViewController {
     
     var city: DDCity!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
