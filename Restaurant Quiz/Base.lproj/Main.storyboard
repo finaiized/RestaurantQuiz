@@ -81,6 +81,7 @@
                     <connections>
                         <outlet property="distanceLabel" destination="mLx-ir-fT0" id="Kdf-69-THZ"/>
                         <outlet property="mapView" destination="G46-U1-0a0" id="fla-Sw-ANj"/>
+                        <outlet property="scoreLabel" destination="m7m-G7-5Ty" id="sfL-pS-VdJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

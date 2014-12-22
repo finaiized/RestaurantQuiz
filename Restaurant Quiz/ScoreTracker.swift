@@ -38,7 +38,7 @@ class ScoreTracker: NSObject {
     }
     
     func highestScore() -> Int {
-        var highestScore = 0
+        var highestScore:Int = 0
         for score in getScores() {
             if score > highestScore {
                 highestScore = score

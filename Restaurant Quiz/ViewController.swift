@@ -14,6 +14,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     // MARK: - Outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     // MARK: - Properties
     
@@ -48,12 +49,21 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     }
     var attempts: Int = 0
     
-    var score: Int = 1000
+    var score: Int {
+        didSet {
+            scoreLabel.text = "\(score)"
+        }
+    }
+    
+    let maxScore = 2000
+    
+    var timer: NSTimer?
     
     // MARK: - Lifecycle Methods
     required init(coder aDecoder: NSCoder) {
         overlays = []
         restaurants = []
+        score = maxScore
         super.init(coder: aDecoder)
     }
     
@@ -86,9 +96,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
                 
                 cpvc.categories = categories.allObjects as [String]
             }
-            if id == "Scores" {
-                NSLog(">???")
-            }
         }
     }
     
@@ -100,6 +107,8 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         resetGameState()
         destination = destinationRestaurant
         panCameraTo(destinationRestaurant.city)
+        timer = NSTimer(timeInterval: 1, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
+        NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSDefaultRunLoopMode)
         ScoreTracker.sharedInstance.addScore(5, attempts: 3)
         ScoreTracker.sharedInstance.addScore(4, attempts: 10)
         ScoreTracker.sharedInstance.addScore(3, attempts: 2)
@@ -108,6 +117,10 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         ScoreTracker.sharedInstance.addScore(2, attempts: 5)
         ScoreTracker.sharedInstance.addScore(15, attempts: 8)
         
+    }
+    
+    func tickScore(timer: NSTimer) {
+        score = Int(Float(score) * 0.99)
     }
 
     func endGame() {
@@ -121,6 +134,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         mapView.removeAnnotations(mapView.annotations)
         addAnnotation(destination!)
         ScoreTracker.sharedInstance.addScore(score, attempts: attempts)
+        timer?.invalidate()
     }
     
     
@@ -133,7 +147,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         overlays = []
         distance = 0
         destination = nil
-        score = 0
+        score = maxScore
         attempts = 0
     }
     
