@@ -14,44 +14,74 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="G46-U1-0a0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="G46-U1-0a0">
+                                <rect key="frame" x="-4" y="0.0" width="608" height="556"/>
                             </mapView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pz6-1D-lSl">
-                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pz6-1D-lSl">
+                                <rect key="frame" x="-4" y="556" width="608" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhQ-gc-FQ1">
-                                        <rect key="frame" x="188" y="28" width="45" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhQ-gc-FQ1">
+                                        <rect key="frame" x="12" y="26" width="30" height="14"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7m-G7-5Ty">
-                                        <rect key="frame" x="188" y="6" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7m-G7-5Ty">
+                                        <rect key="frame" x="12" y="2" width="36" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0000 km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLx-ir-fT0">
-                                        <rect key="frame" x="238" y="6" width="102" height="21"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8i-Fc-NyM">
-                                        <rect key="frame" x="238" y="28" width="97" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8i-Fc-NyM">
+                                        <rect key="frame" x="62" y="27" width="73" height="14"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000 km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLx-ir-fT0">
+                                        <rect key="frame" x="62" y="2" width="63" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="XhQ-gc-FQ1" firstAttribute="top" secondItem="m7m-G7-5Ty" secondAttribute="bottom" constant="4" id="EXY-ni-sJz"/>
+                                    <constraint firstItem="i8i-Fc-NyM" firstAttribute="centerY" secondItem="XhQ-gc-FQ1" secondAttribute="centerY" constant="0.5" id="M1Q-mG-IFN"/>
+                                    <constraint firstItem="mLx-ir-fT0" firstAttribute="leading" secondItem="m7m-G7-5Ty" secondAttribute="trailing" constant="14" id="Rzw-4F-GfB"/>
+                                    <constraint firstItem="m7m-G7-5Ty" firstAttribute="leading" secondItem="Pz6-1D-lSl" secondAttribute="leading" constant="12" id="VC3-bW-SOr"/>
+                                    <constraint firstItem="m7m-G7-5Ty" firstAttribute="leading" secondItem="XhQ-gc-FQ1" secondAttribute="leading" id="guY-DO-Xdo"/>
+                                    <constraint firstItem="i8i-Fc-NyM" firstAttribute="leading" secondItem="mLx-ir-fT0" secondAttribute="leading" id="hPG-1D-QXC"/>
+                                    <constraint firstAttribute="height" constant="44" id="ouC-kf-RuX"/>
+                                    <constraint firstItem="m7m-G7-5Ty" firstAttribute="top" secondItem="Pz6-1D-lSl" secondAttribute="top" constant="2" id="uMM-uD-KDT"/>
+                                    <constraint firstItem="mLx-ir-fT0" firstAttribute="baseline" secondItem="m7m-G7-5Ty" secondAttribute="baseline" id="vho-Fq-xEC"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Pz6-1D-lSl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="2ti-63-5Jd"/>
+                            <constraint firstItem="Pz6-1D-lSl" firstAttribute="top" secondItem="G46-U1-0a0" secondAttribute="bottom" id="6oe-DC-TN7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="G46-U1-0a0" secondAttribute="trailing" constant="-20" id="HaM-kZ-JxJ"/>
+                            <constraint firstItem="G46-U1-0a0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="RfM-tR-mxh"/>
+                            <constraint firstItem="G46-U1-0a0" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="WW5-XY-pog"/>
+                            <constraint firstItem="G46-U1-0a0" firstAttribute="width" secondItem="Pz6-1D-lSl" secondAttribute="width" id="blW-R1-eFz"/>
+                            <constraint firstItem="G46-U1-0a0" firstAttribute="leading" secondItem="Pz6-1D-lSl" secondAttribute="leading" id="gOE-Da-dw8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pz6-1D-lSl" secondAttribute="trailing" constant="-16" id="nhg-o7-g1H"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Pz6-1D-lSl" secondAttribute="bottom" id="yq4-eB-w4Z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pz6-1D-lSl" secondAttribute="trailing" constant="-16" id="zBy-UZ-OQc"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2ti-63-5Jd"/>
+                                <exclude reference="nhg-o7-g1H"/>
+                                <exclude reference="zBy-UZ-OQc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Restaurant Quiz" id="7zv-0w-gyn">
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="9wY-Vw-nwH">
@@ -60,7 +90,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="distanceLabel" destination="mLx-ir-fT0" id="Kdf-69-THZ"/>
                         <outlet property="infoView" destination="Pz6-1D-lSl" id="TTK-qv-Wyv"/>
@@ -77,7 +106,7 @@
             <objects>
                 <tableViewController title="Select City" id="pL5-z0-t8x" customClass="DDCityPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gDp-bN-BCM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -106,7 +135,7 @@
             <objects>
                 <tableViewController title="Select Category" id="p3p-Q5-zdg" customClass="DDCategoryPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kX3-ka-Wd2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -139,7 +168,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Gax-az-FHp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rfe-9n-SUL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Yelp" translatesAutoresizingMaskIntoConstraints="NO" id="Eh4-IX-Qh2">

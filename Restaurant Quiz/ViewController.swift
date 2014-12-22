@@ -75,14 +75,15 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         tapRecognizer.minimumPressDuration = 0.5
         self.mapView.addGestureRecognizer(tapRecognizer)
         self.mapView.showsPointsOfInterest = false
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
         let shadowPath = UIBezierPath(rect: infoView.bounds)
         infoView.layer.masksToBounds = false
         infoView.layer.shadowColor = UIColor.blackColor().CGColor
         infoView.layer.shadowOffset = CGSizeMake(0, 0.5)
         infoView.layer.shadowOpacity = 0.5
         infoView.layer.shadowPath = shadowPath.CGPath
-
     }
     
     override func viewWillAppear(animated: Bool) {
