@@ -18,6 +18,17 @@ class DDScoreTableViewController: UITableViewController, UINavigationControllerD
         self.navigationController?.delegate = self
         tableView.rowHeight = 44
         
+        if tableView.numberOfRowsInSection(0) == 0 {
+            let backgroundView = UIView(frame: tableView.frame)
+            let label = UILabel(frame: CGRect(x: 10, y: 100, width: tableView.frame.width - 10, height: 20))
+            label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+            label.numberOfLines = 0
+            label.textAlignment = NSTextAlignment.Center
+            label.text = "Scores will show up here after you play"
+            label.textColor = UIColor.lightGrayColor()
+            backgroundView.addSubview(label)
+            tableView.backgroundView = backgroundView
+        }
     }
     
     // MARK: - Table view data source
