@@ -15,6 +15,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var infoView: UIView!
     
     // MARK: - Properties
@@ -99,6 +100,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         destination = destinationRestaurant
         panCameraTo(destinationRestaurant.city)
         timer = NSTimer(timeInterval: 1, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
+        restaurantLabel.text = destination!.name
         NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
         ScoreTracker.sharedInstance.addScore(5, attempts: 3)
         ScoreTracker.sharedInstance.addScore(4, attempts: 10)

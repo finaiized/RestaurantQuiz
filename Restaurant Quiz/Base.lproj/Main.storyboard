@@ -36,7 +36,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8i-Fc-NyM">
-                                        <rect key="frame" x="62" y="27" width="73" height="14"/>
+                                        <rect key="frame" x="62" y="26" width="73" height="14"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -47,19 +47,41 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3P-ia-yOM">
+                                        <rect key="frame" x="143" y="2" width="130" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkz-q7-5hQ">
+                                        <rect key="frame" x="143" y="26" width="90" height="14"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="Wkz-q7-5hQ" firstAttribute="leading" secondItem="i8i-Fc-NyM" secondAttribute="trailing" constant="8" id="6Uu-e1-yPc"/>
+                                    <constraint firstItem="Wkz-q7-5hQ" firstAttribute="leading" secondItem="F3P-ia-yOM" secondAttribute="leading" id="EOE-Fg-SbB"/>
                                     <constraint firstItem="XhQ-gc-FQ1" firstAttribute="top" secondItem="m7m-G7-5Ty" secondAttribute="bottom" constant="4" id="EXY-ni-sJz"/>
-                                    <constraint firstItem="i8i-Fc-NyM" firstAttribute="centerY" secondItem="XhQ-gc-FQ1" secondAttribute="centerY" constant="0.5" id="M1Q-mG-IFN"/>
+                                    <constraint firstItem="Wkz-q7-5hQ" firstAttribute="centerY" secondItem="i8i-Fc-NyM" secondAttribute="centerY" id="KYz-WB-RQY"/>
+                                    <constraint firstItem="i8i-Fc-NyM" firstAttribute="centerY" secondItem="XhQ-gc-FQ1" secondAttribute="centerY" id="M1Q-mG-IFN"/>
                                     <constraint firstItem="mLx-ir-fT0" firstAttribute="leading" secondItem="m7m-G7-5Ty" secondAttribute="trailing" constant="14" id="Rzw-4F-GfB"/>
                                     <constraint firstItem="m7m-G7-5Ty" firstAttribute="leading" secondItem="Pz6-1D-lSl" secondAttribute="leading" constant="12" id="VC3-bW-SOr"/>
                                     <constraint firstItem="m7m-G7-5Ty" firstAttribute="leading" secondItem="XhQ-gc-FQ1" secondAttribute="leading" id="guY-DO-Xdo"/>
                                     <constraint firstItem="i8i-Fc-NyM" firstAttribute="leading" secondItem="mLx-ir-fT0" secondAttribute="leading" id="hPG-1D-QXC"/>
+                                    <constraint firstItem="i8i-Fc-NyM" firstAttribute="leading" secondItem="XhQ-gc-FQ1" secondAttribute="trailing" constant="20" id="jbK-BK-WZg"/>
                                     <constraint firstAttribute="height" constant="44" id="ouC-kf-RuX"/>
+                                    <constraint firstItem="F3P-ia-yOM" firstAttribute="top" secondItem="Pz6-1D-lSl" secondAttribute="top" constant="2" id="q8r-NY-6gv"/>
                                     <constraint firstItem="m7m-G7-5Ty" firstAttribute="top" secondItem="Pz6-1D-lSl" secondAttribute="top" constant="2" id="uMM-uD-KDT"/>
                                     <constraint firstItem="mLx-ir-fT0" firstAttribute="baseline" secondItem="m7m-G7-5Ty" secondAttribute="baseline" id="vho-Fq-xEC"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Rzw-4F-GfB"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -99,6 +121,7 @@
                         <outlet property="distanceLabel" destination="mLx-ir-fT0" id="Kdf-69-THZ"/>
                         <outlet property="infoView" destination="Pz6-1D-lSl" id="TTK-qv-Wyv"/>
                         <outlet property="mapView" destination="G46-U1-0a0" id="fla-Sw-ANj"/>
+                        <outlet property="restaurantLabel" destination="F3P-ia-yOM" id="TKC-R8-toI"/>
                         <outlet property="scoreLabel" destination="m7m-G7-5Ty" id="sfL-pS-VdJ"/>
                     </connections>
                 </viewController>
@@ -212,10 +235,10 @@
             </objects>
             <point key="canvasLocation" x="1563" y="-46"/>
         </scene>
-        <!--Score Table View Controller-->
+        <!--Scores-->
         <scene sceneID="dam-K4-Rzz">
             <objects>
-                <tableViewController id="61F-0C-u3u" customClass="DDScoreTableViewController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Scores" id="61F-0C-u3u" customClass="DDScoreTableViewController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xmf-EK-uYw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

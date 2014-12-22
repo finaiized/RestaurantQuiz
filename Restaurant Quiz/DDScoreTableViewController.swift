@@ -8,14 +8,10 @@
 
 import UIKit
 
-class DDScoreTableViewController: UITableViewController, UINavigationControllerDelegate {
+class DDScoreTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationItem.title = "Recent Scores"
-        self.navigationController?.delegate = self
         tableView.rowHeight = 44
         
         if tableView.numberOfRowsInSection(0) == 0 {
