@@ -16,8 +16,8 @@ class ScoreTracker: NSObject {
         return Static.instance
     }
     
-    private var scores: Stack<Int>
-    private var attempts: Stack<Int>
+    private var scores: Stack
+    private var attempts: Stack
     
     private override init() {
         scores = Stack(size: 5)
@@ -30,11 +30,11 @@ class ScoreTracker: NSObject {
     }
     
     func getScores() -> [Int] {
-        return scores.toArray()
+        return scores.toArray() as [Int]
     }
     
     func getAttempts() -> [Int] {
-        return attempts.toArray()
+        return attempts.toArray() as [Int]
     }
     
     func highestScore() -> Int {
@@ -55,5 +55,26 @@ class ScoreTracker: NSObject {
             }
         }
         return minAttempts
+    }
+    
+    func saveScores() {
+        let dest = getScoresDirectory()
+        NSKeyedArchiver.archiveRootObject([scores, attempts], toFile: dest)
+    }
+    
+    func readScores() {
+        let dest = getScoresDirectory()
+        if let data = NSKeyedUnarchiver.unarchiveObjectWithFile(dest) as? [Stack] {
+            self.scores = data[0]
+            self.attempts = data[1]
+        }
+    
+    }
+    
+    func getScoresDirectory() -> String {
+        let destDir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first as String!
+        let destName = destDir.stringByAppendingPathComponent("scores.archive")
+        
+        return destName
     }
 }

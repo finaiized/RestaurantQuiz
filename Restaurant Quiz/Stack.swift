@@ -8,24 +8,41 @@
 
 import UIKit
 
-public class Stack<T: Equatable> {
-    var array: [T?]
+public class Stack: NSObject, NSCoding {
+    var array: [NSNumber?]
     var count: Int = 0
     var back: Int = 1
     let size: Int
     
     init(size: Int) {
-        array = [T?](count: size, repeatedValue: nil)
+        array = [NSNumber?](count: size, repeatedValue: nil)
         self.size = size
     }
     
-    func enqueue(item: T) {
+    public required init(coder aDecoder: NSCoder) {
+        self.size = aDecoder.decodeIntegerForKey("size")
+        array = [NSNumber?](count: size, repeatedValue: nil)
+        let tempArray = aDecoder.decodeObjectForKey("array") as [NSNumber]
+        self.count = tempArray.count
+        self.back = self.count
+        
+        for i in 0..<tempArray.count {
+            array[i] = tempArray[i]
+        }
+    }
+    
+    public func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeInteger(size, forKey: "size")
+        aCoder.encodeObject(toArray().reverse(), forKey: "array")
+    }
+    
+    func enqueue(item: NSNumber) {
         array[back] = item
         back = (back + 1) % size
         count++
     }
     
-    func dequeue() -> T? {
+    func dequeue() -> NSNumber? {
         var index = (back - 1) % size
         if index < 0 {
             index = size - 1
@@ -37,8 +54,8 @@ public class Stack<T: Equatable> {
         return val
     }
     
-    func toArray() -> [T] {
-        var temp = [T]()
+    func toArray() -> [NSNumber] {
+        var temp = [NSNumber]()
         for i in 0..<size {
             let k = dequeue()
             if let k = k {

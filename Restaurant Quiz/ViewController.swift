@@ -98,14 +98,6 @@ class ViewController: UIViewController {
         panCameraTo(destinationRestaurant.city)
         restaurantLabel.text = destination!.name
         popUpInfoView()
-        ScoreTracker.sharedInstance.addScore(5, attempts: 3)
-        ScoreTracker.sharedInstance.addScore(4, attempts: 10)
-        ScoreTracker.sharedInstance.addScore(3, attempts: 2)
-        ScoreTracker.sharedInstance.addScore(15, attempts: 6)
-        ScoreTracker.sharedInstance.addScore(3, attempts: 4)
-        ScoreTracker.sharedInstance.addScore(2, attempts: 5)
-        ScoreTracker.sharedInstance.addScore(15, attempts: 8)
-        
     }
     
     func tickScore(timer: NSTimer) {
