@@ -10,8 +10,9 @@ import UIKit
 
 class DDCityPickerController: UITableViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
     }
     
     // MARK: - Table view data source
@@ -38,4 +39,5 @@ class DDCityPickerController: UITableViewController {
             cpc.city = selectedCity
         }
     }
+    
 }

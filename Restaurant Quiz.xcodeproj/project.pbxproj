@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5664803FFEC1D79CCFA946C1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1232FB65B57F6EBDF0AD1622 /* libPods.a */; };
 		CE212D5D1A4897F00008B92C /* DDCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE212D5C1A4897F00008B92C /* DDCategory.swift */; };
-		CE212D5F1A489DF40008B92C /* PreGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE212D5E1A489DF40008B92C /* PreGameViewController.swift */; };
 		CE4C06B31A41334C00ABF3A3 /* ColourAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C06B21A41334C00ABF3A3 /* ColourAnnotationView.swift */; };
 		CE6D1C3D1A40B40D00642A21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1C3C1A40B40D00642A21 /* AppDelegate.swift */; };
 		CE6D1C3F1A40B40D00642A21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1C3E1A40B40D00642A21 /* ViewController.swift */; };
@@ -44,7 +43,6 @@
 		13008D2A0EEB473FC5D895AF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7E8738D929269782DCD9F12C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CE212D5C1A4897F00008B92C /* DDCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCategory.swift; sourceTree = "<group>"; };
-		CE212D5E1A489DF40008B92C /* PreGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreGameViewController.swift; sourceTree = "<group>"; };
 		CE4C06B21A41334C00ABF3A3 /* ColourAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourAnnotationView.swift; sourceTree = "<group>"; };
 		CE6D1C371A40B40D00642A21 /* Restaurant Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restaurant Quiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6D1C3B1A40B40D00642A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 				CEFE0E701A4695AF002713B6 /* Stack.swift */,
 				CED07FFE1A478B0D005FD91C /* ScoreTableViewCell.swift */,
 				CE212D5C1A4897F00008B92C /* DDCategory.swift */,
-				CE212D5E1A489DF40008B92C /* PreGameViewController.swift */,
 			);
 			path = "Restaurant Quiz";
 			sourceTree = "<group>";
@@ -321,7 +318,6 @@
 				CE4C06B31A41334C00ABF3A3 /* ColourAnnotationView.swift in Sources */,
 				CE6D1C3F1A40B40D00642A21 /* ViewController.swift in Sources */,
 				CE6D1C3D1A40B40D00642A21 /* AppDelegate.swift in Sources */,
-				CE212D5F1A489DF40008B92C /* PreGameViewController.swift in Sources */,
 				CE212D5D1A4897F00008B92C /* DDCategory.swift in Sources */,
 				CECDBC0A1A46818500AAE0EB /* DDScoreTableViewController.swift in Sources */,
 				CECDBC081A454AF900AAE0EB /* DDCategoryPickerController.swift in Sources */,

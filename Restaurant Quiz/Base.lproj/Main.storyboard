@@ -147,9 +147,6 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GbK-uY-Bw4" id="2yC-Gc-ZvH">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="p3p-Q5-zdg" kind="show" identifier="Category" id="0Gu-07-zsi"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -157,6 +154,13 @@
                             <outlet property="delegate" destination="pL5-z0-t8x" id="l4d-Zh-SJX"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="City" id="LXk-A5-qmX">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="oQb-g2-Fau">
+                            <connections>
+                                <segue destination="p3p-Q5-zdg" kind="show" identifier="Category" id="2ec-m9-1cn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCt-HG-AIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -176,9 +180,6 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WgS-wH-8sh" id="a68-sd-4Sb">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="8rn-lh-wrq" kind="show" id="5KD-nD-NUL"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -186,58 +187,20 @@
                             <outlet property="delegate" destination="p3p-Q5-zdg" id="J4v-Aj-Fgi"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Category" id="jcM-xt-JLa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="0LT-3W-8bM">
+                            <connections>
+                                <action selector="done:" destination="p3p-Q5-zdg" id="NOM-gy-AW6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="rightButton" destination="0LT-3W-8bM" id="KpT-mv-Eq2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Khu-vS-iOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1170" y="-46"/>
-        </scene>
-        <!--Pre Game View Controller-->
-        <scene sceneID="Vsn-J5-CAR">
-            <objects>
-                <viewController id="8rn-lh-wrq" customClass="PreGameViewController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NkU-di-khP"/>
-                        <viewControllerLayoutGuide type="bottom" id="Gax-az-FHp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rfe-9n-SUL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We're getting (CATEGORY) restaurants in (CITY)" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Es9-3m-rve">
-                                <rect key="frame" x="16" y="64" width="288" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Yelp" translatesAutoresizingMaskIntoConstraints="NO" id="Eh4-IX-Qh2">
-                                <rect key="frame" x="259" y="538" width="45" height="22"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSo-TK-y8c">
-                                <rect key="frame" x="141" y="246" width="33" height="30"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startGame:" destination="8rn-lh-wrq" eventType="touchUpInside" id="Dvk-M9-KgZ"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="powered by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30v-pd-B2G">
-                                <rect key="frame" x="188" y="542" width="91" height="21"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="descriptionLabel" destination="Es9-3m-rve" id="9uH-0d-a8f"/>
-                        <outlet property="startButton" destination="iSo-TK-y8c" id="nuT-Ly-E6r"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dWV-ZA-i0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1563" y="-46"/>
+            <point key="canvasLocation" x="1302" y="-46"/>
         </scene>
         <!--Scores-->
         <scene sceneID="dam-K4-Rzz">
@@ -347,6 +310,5 @@
     </scenes>
     <resources>
         <image name="Leaderboard" width="20" height="22"/>
-        <image name="Yelp" width="51" height="27"/>
     </resources>
 </document>
