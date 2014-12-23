@@ -13,13 +13,13 @@ struct Restaurant {
     var name: String
     var categories: [String]
     var coordinate: CLLocationCoordinate2D
-    var city: DDCity
+    var city: City
     
     var description: String {
         return "\(name) includes category \(categories[0]) at \(coordinate.latitude), \(coordinate.longitude)"
     }
     
-    init(name: String, categories: [String], location: CLLocationCoordinate2D, city: DDCity) {
+    init(name: String, categories: [String], location: CLLocationCoordinate2D, city: City) {
         self.name = name
         self.categories = categories
         self.coordinate = location

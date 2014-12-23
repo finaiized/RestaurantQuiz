@@ -1,5 +1,5 @@
 //
-//  DDCategoryPickerController.swift
+//  CategoryPickerController.swift
 //  Restaurant Quiz
 //
 //  Created by Dominic Kuang on 12/19/14.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DDCategoryPickerController: UITableViewController {
+class CategoryPickerController: UITableViewController {
     
-    var city: DDCity!
+    var city: City!
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -24,7 +24,7 @@ class DDCategoryPickerController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DDCategory.allValues.count
+        return Category.allValues.count
     }
     
     @IBAction func done(sender: AnyObject) {
@@ -38,7 +38,7 @@ class DDCategoryPickerController: UITableViewController {
             indexPath = NSIndexPath(forRow: 0, inSection: 0)
         }
         
-        let category = DDCategory.allValues[indexPath!.row]
+        let category = Category.allValues[indexPath!.row]
         Yelp.restaurantsFromCity(city, category: category, completion: {
             [unowned self](restaurants: [Restaurant]) in
             let rand = Int(arc4random_uniform(UInt32(restaurants.count)))
@@ -53,7 +53,7 @@ class DDCategoryPickerController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
         
-        cell.textLabel?.text = DDCategory.allValues[indexPath.row].rawValue
+        cell.textLabel?.text = Category.allValues[indexPath.row].rawValue
         return cell
     }
 }

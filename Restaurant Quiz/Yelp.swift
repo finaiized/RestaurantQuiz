@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 class Yelp: NSObject {
-    class func restaurantsFromCity(city: DDCity, category: DDCategory, completion: (restaurants: [Restaurant]) -> ()) {
+    class func restaurantsFromCity(city: City, category: Category, completion: (restaurants: [Restaurant]) -> ()) {
         let request = TDOAuth.URLRequestForPath("/v2/search", GETParameters: ["term": "\(category.rawValue) restaurants", "location": city.rawValue], host: "api.yelp.com", consumerKey: "ZObdp8qJ-ImZZzxegBePdA", consumerSecret: "4rVrs3jq0VhVeDPhLXIIQ_x3338", accessToken: "Nwgk0--aXjyjAC4Z8SISYb8wohaXioqs", tokenSecret: "WmjZ_x2JRk-0Jiw7632BKqOlBxM")
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         session.dataTaskWithRequest(request, completionHandler: {
@@ -20,7 +20,7 @@ class Yelp: NSObject {
     }
     
     /** Given data returned from a Yelp Search request, return an array of Restaurant. Runs async. */
-    class func restaurantsFromYelpJSON(data: NSData, forCity city: DDCity, completion: (restaurants: [Restaurant]) -> ()) {
+    class func restaurantsFromYelpJSON(data: NSData, forCity city: City, completion: (restaurants: [Restaurant]) -> ()) {
         var restaurants = [Restaurant]()
         let group = dispatch_group_create()
         

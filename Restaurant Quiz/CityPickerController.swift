@@ -1,5 +1,5 @@
 //
-//  DDCityViewController.swift
+//  CityViewController.swift
 //  Restaurant Quiz
 //
 //  Created by Dominic Kuang on 12/17/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DDCityPickerController: UITableViewController {
+class CityPickerController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -22,24 +22,24 @@ class DDCityPickerController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DDCity.allValues.count
+        return City.allValues.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
        
-        cell.textLabel?.text = DDCity.allValues[indexPath.row].rawValue
+        cell.textLabel?.text = City.allValues[indexPath.row].rawValue
         return cell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let cpc = segue.destinationViewController as? DDCategoryPickerController {
+        if let cpc = segue.destinationViewController as? CategoryPickerController {
             var indexPath = self.tableView.indexPathForSelectedRow()
             if indexPath == nil {
                 indexPath = NSIndexPath(forRow: 0, inSection: 0)
             }
             
-            let selectedCity = DDCity.allValues[indexPath!.row]
+            let selectedCity = City.allValues[indexPath!.row]
             cpc.city = selectedCity
         }
     }

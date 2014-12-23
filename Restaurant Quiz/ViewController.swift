@@ -266,7 +266,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     // MARK: - MapView Helpers
     
     /** Animates the camera to the given city */
-    func panCameraTo(city: DDCity) {
+    func panCameraTo(city: City) {
         let camera = city.cameraFromCity()
         mapView.setCamera(camera, animated: true)
     }

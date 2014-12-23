@@ -1,6 +1,6 @@
 
 //
-//  DDCity.swift
+//  City.swift
 //  Restaurant Quiz
 //
 //  Created by Dominic Kuang on 12/17/14.
@@ -10,7 +10,7 @@
 import UIKit
 import MapKit
 
-enum DDCity: String {
+enum City: String {
     case Vancouver = "Vancouver, B.C."
     case Edmonton = "Edmonton, AB"
     

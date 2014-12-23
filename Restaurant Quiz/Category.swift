@@ -1,5 +1,5 @@
 //
-//  DDCategory.swift
+//  Category.swift
 //  Restaurant Quiz
 //
 //  Created by Dominic Kuang on 12/22/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum DDCategory: String {
+enum Category: String {
     case Any = "Any"
     case Chinese = "Chinese"
     case Indian = "Indian"

@@ -1,5 +1,5 @@
 //
-//  DDScoreTableViewController.swift
+//  ScoreTableViewController.swift
 //  Restaurant Quiz
 //
 //  Created by Dominic Kuang on 12/20/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DDScoreTableViewController: UITableViewController {
+class ScoreTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -136,7 +136,7 @@
         <!--Select City-->
         <scene sceneID="liW-8k-loy">
             <objects>
-                <tableViewController title="Select City" id="pL5-z0-t8x" customClass="DDCityPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Select City" id="pL5-z0-t8x" customClass="CityPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gDp-bN-BCM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +169,7 @@
         <!--Select Category-->
         <scene sceneID="Vkx-Iq-h2T">
             <objects>
-                <tableViewController title="Select Category" id="p3p-Q5-zdg" customClass="DDCategoryPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Select Category" id="p3p-Q5-zdg" customClass="CategoryPickerController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kX3-ka-Wd2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,7 +202,7 @@
         <!--Scores-->
         <scene sceneID="dam-K4-Rzz">
             <objects>
-                <tableViewController title="Scores" id="61F-0C-u3u" customClass="DDScoreTableViewController" customModule="Restaurant_Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Scores" id="61F-0C-u3u" customClass="ScoreTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xmf-EK-uYw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
