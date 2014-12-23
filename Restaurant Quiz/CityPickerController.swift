@@ -15,23 +15,6 @@ class CityPickerController: UITableViewController {
         tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
     }
     
-    // MARK: - Table view data source
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return City.allValues.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
-       
-        cell.textLabel?.text = City.allValues[indexPath.row].rawValue
-        return cell
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let cpc = segue.destinationViewController as? CategoryPickerController {
             var indexPath = self.tableView.indexPathForSelectedRow()
@@ -42,6 +25,25 @@ class CityPickerController: UITableViewController {
             let selectedCity = City.allValues[indexPath!.row]
             cpc.city = selectedCity
         }
+    }
+    
+}
+
+// MARK: - Table view data source
+extension CityPickerController: UITableViewDataSource {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return City.allValues.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
+        
+        cell.textLabel?.text = City.allValues[indexPath.row].rawValue
+        return cell
     }
     
 }

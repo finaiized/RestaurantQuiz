@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelegate {
+class ViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var mapView: MKMapView!
@@ -119,7 +119,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         UIView.animateWithDuration(0.8, delay: 0, options: .CurveEaseOut, animations: {
             [unowned self] in
             self.infoView.layoutIfNeeded()
-        }, completion: nil)
+            }, completion: nil)
     }
     
     func endGame() {
@@ -202,42 +202,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         return MKMapItem(placemark: MKPlacemark(coordinate: annotation.coordinate, addressDictionary: nil))
     }
     
-    
-    // MARK: - MKMapViewDelegate
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        if overlay is MKPolyline {
-            let polyRenderer = MKPolylineRenderer(overlay: overlay)
-            polyRenderer.lineWidth = 3
-            polyRenderer.strokeColor = UIColor.redColor().colorWithAlphaComponent(0.6)
-            return polyRenderer
-        }
-        return nil
-    }
-    
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("ColourAnnotationView") as? ColourAnnotationView
-        
-        if annotationView == nil {
-            annotationView = ColourAnnotationView(annotation: annotation, reuseIdentifier: "ColourAnnotationView")
-            annotationView!.canShowCallout = true
-            annotationView!.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
-        } else {
-            annotationView!.annotation = annotation
-        }
-        
-        let dist = distanceBetweenPoints(annotation.coordinate, p2: destination!.coordinate)
-        annotationView!.hue = colourGradientFromDistanceRemaining(dist)
-        annotationView!.setNeedsDisplay()
-        return annotationView
-    }
-    
-    func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool) {
-        if playing && timer? == nil {
-            timer = NSTimer(timeInterval: 1.5, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
-            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
-        }
-    }
-    
     // MARK: - Gesture Recognizer
     func handleMapTouch(gr: UITapGestureRecognizer) {
         if gr.state == UIGestureRecognizerState.Began && playing {
@@ -298,5 +262,42 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         let point = addAnnotation(mapItem) as MKPointAnnotation
         point.title = restaurant.name
         return point
+    }
+}
+
+// MARK: - MKMapViewDelegate
+extension ViewController: MKMapViewDelegate {
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if overlay is MKPolyline {
+            let polyRenderer = MKPolylineRenderer(overlay: overlay)
+            polyRenderer.lineWidth = 3
+            polyRenderer.strokeColor = UIColor.redColor().colorWithAlphaComponent(0.6)
+            return polyRenderer
+        }
+        return nil
+    }
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("ColourAnnotationView") as? ColourAnnotationView
+        
+        if annotationView == nil {
+            annotationView = ColourAnnotationView(annotation: annotation, reuseIdentifier: "ColourAnnotationView")
+            annotationView!.canShowCallout = true
+            annotationView!.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        let dist = distanceBetweenPoints(annotation.coordinate, p2: destination!.coordinate)
+        annotationView!.hue = colourGradientFromDistanceRemaining(dist)
+        annotationView!.setNeedsDisplay()
+        return annotationView
+    }
+    
+    func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool) {
+        if playing && timer? == nil {
+            timer = NSTimer(timeInterval: 1.5, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
+            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        }
     }
 }

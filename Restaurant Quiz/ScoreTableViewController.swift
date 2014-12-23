@@ -9,7 +9,7 @@
 import UIKit
 
 class ScoreTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 44
@@ -26,17 +26,17 @@ class ScoreTableViewController: UITableViewController {
             tableView.backgroundView = backgroundView
         }
     }
-    
-    // MARK: - Table view data source
+}
 
+// MARK: - Table view data source
+extension ScoreTableViewController: UITableViewDataSource {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ScoreTracker.sharedInstance.getScores().count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ScoreTableViewCell", forIndexPath: indexPath) as ScoreTableViewCell

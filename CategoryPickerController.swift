@@ -17,16 +17,6 @@ class CategoryPickerController: UITableViewController {
         tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
     }
     
-    // MARK: - Table view data source
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Category.allValues.count
-    }
-    
     @IBAction func done(sender: AnyObject) {
         let activity = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
         activity.startAnimating()
@@ -48,6 +38,18 @@ class CategoryPickerController: UITableViewController {
                 self.navigationController?.popToRootViewControllerAnimated(true)
             })
         })
+    }
+}
+
+// MARK: - Table view data source
+extension CategoryPickerController: UITableViewDataSource {
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Category.allValues.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
