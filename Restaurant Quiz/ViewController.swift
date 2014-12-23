@@ -151,6 +151,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         destination = nil
         score = maxScore
         attempts = 0
+        timer?.invalidate()
     }
     
     // MARK: - Routing Methods

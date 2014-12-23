@@ -12,8 +12,6 @@ class DDCategoryPickerController: UITableViewController {
     
     var city: DDCity!
     
-    @IBOutlet weak var rightButton: UIBarButtonItem!
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
