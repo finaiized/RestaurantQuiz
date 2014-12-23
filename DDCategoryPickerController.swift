@@ -40,18 +40,14 @@ class DDCategoryPickerController: UITableViewController {
         
         let category = DDCategory.allValues[indexPath!.row]
         Yelp.restaurantsFromCity(city, category: category, completion: {
-            [unowned self] (data: NSData) in
-            Restaurant.restaurantsFromYelpJSON(data, forCity: self.city, completion: {
-                [unowned self](restaurants: [Restaurant]) in
-                let rand = Int(arc4random_uniform(UInt32(restaurants.count)))
-                dispatch_async(dispatch_get_main_queue(), {
-                    let vc = self.navigationController?.viewControllers[0] as ViewController
-                    vc.startNewRound(restaurants[rand])
-                    self.navigationController?.popToRootViewControllerAnimated(true)
-                })
+            [unowned self](restaurants: [Restaurant]) in
+            let rand = Int(arc4random_uniform(UInt32(restaurants.count)))
+            dispatch_async(dispatch_get_main_queue(), {
+                let vc = self.navigationController?.viewControllers[0] as ViewController
+                vc.startNewRound(restaurants[rand])
+                self.navigationController?.popToRootViewControllerAnimated(true)
             })
         })
-
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
