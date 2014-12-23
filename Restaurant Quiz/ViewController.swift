@@ -96,9 +96,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         resetGameState()
         destination = destinationRestaurant
         panCameraTo(destinationRestaurant.city)
-        timer = NSTimer(timeInterval: 1.5, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
         restaurantLabel.text = destination!.name
-        NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
         popUpInfoView()
         ScoreTracker.sharedInstance.addScore(5, attempts: 3)
         ScoreTracker.sharedInstance.addScore(4, attempts: 10)
@@ -231,6 +229,13 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         annotationView!.hue = colourGradientFromDistanceRemaining(dist)
         annotationView!.setNeedsDisplay()
         return annotationView
+    }
+    
+    func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool) {
+        if playing && timer? == nil {
+            timer = NSTimer(timeInterval: 1.5, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
+            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        }
     }
     
     // MARK: - Gesture Recognizer
