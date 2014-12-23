@@ -4,10 +4,10 @@ We coded in small parts of a game called "Restaurant Quiz" for Android in CPSC 2
 Some liberties have been taken along the way, primarily towards the UI and a few game elements.
 
 This version utilizes many features of iOS, including:
-- Auto Layout
-- UI animations
-- MapKit
+* Auto Layout
+* UI animations
+* MapKit
 
 Credits:
-- "Scores button", created by Mundo from the Noun Project
-- Yelp, for their search API
+* "Scores button", created by Mundo from the Noun Project
+* Yelp, for their search API
