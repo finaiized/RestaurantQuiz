@@ -77,6 +77,8 @@ class ViewController: UIViewController {
         tapRecognizer.minimumPressDuration = 0.5
         self.mapView.addGestureRecognizer(tapRecognizer)
         self.mapView.showsPointsOfInterest = false
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 0.204, green: 0.667, blue: 0.863, alpha: 1)
+
     }
     
     override func viewDidLayoutSubviews() {
