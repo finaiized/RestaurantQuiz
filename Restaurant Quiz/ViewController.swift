@@ -111,7 +111,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     }
     
     func tickScore(timer: NSTimer) {
-        NSLog("TICKING")
         score = Int(Float(score) * 0.99)
     }
     

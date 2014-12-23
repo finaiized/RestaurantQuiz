@@ -34,7 +34,11 @@ class DDCityPickerController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let cpc = segue.destinationViewController as? DDCategoryPickerController {
-            let indexPath = self.tableView.indexPathForSelectedRow()
+            var indexPath = self.tableView.indexPathForSelectedRow()
+            if indexPath == nil {
+                indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            }
+            
             let selectedCity = DDCity.allValues[indexPath!.row]
             cpc.city = selectedCity
         }

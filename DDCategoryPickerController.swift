@@ -33,7 +33,11 @@ class DDCategoryPickerController: UITableViewController {
         let activityBarItem = UIBarButtonItem(customView: activity)
         navigationItem.rightBarButtonItem = activityBarItem
         
-        let indexPath = tableView.indexPathForSelectedRow()
+        var indexPath = tableView.indexPathForSelectedRow()
+        if indexPath == nil {
+            indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        }
+        
         let category = DDCategory.allValues[indexPath!.row]
         Yelp.restaurantsFromCity(city, category: category, completion: {
             [unowned self] (data: NSData) in
