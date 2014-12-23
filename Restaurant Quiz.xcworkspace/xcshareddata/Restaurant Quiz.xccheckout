@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C5B31E4D-F1DB-453E-9EE1-6BDDD34B24E4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Restaurant Quiz</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>185D24A27D6BDDA37BEA7F898555BC39B4E5CB3F</key>
+		<string>https://bitbucket.org/finaiized/restaurant-quiz.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Restaurant Quiz.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>185D24A27D6BDDA37BEA7F898555BC39B4E5CB3F</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/finaiized/restaurant-quiz.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>185D24A27D6BDDA37BEA7F898555BC39B4E5CB3F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>185D24A27D6BDDA37BEA7F898555BC39B4E5CB3F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Restaurant%20Quiz</string>
+		</dict>
+	</array>
+</dict>
+</plist>

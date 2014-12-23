@@ -9,12 +9,15 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelegate {
+class ViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var restaurantLabel: UILabel!
+    @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var infoViewBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
     
@@ -30,7 +33,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     var previous: MKAnnotation?
     var overlays: [MKOverlay]
     var destination: Restaurant?
-    var restaurants: [Restaurant]
     
     var distanceFormatter: MKDistanceFormatter {
         struct Static {
@@ -62,7 +64,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     // MARK: - Lifecycle Methods
     required init(coder aDecoder: NSCoder) {
         overlays = []
-        restaurants = []
         score = maxScore
         super.init(coder: aDecoder)
     }
@@ -76,29 +77,15 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         tapRecognizer.minimumPressDuration = 0.5
         self.mapView.addGestureRecognizer(tapRecognizer)
         self.mapView.showsPointsOfInterest = false
-        
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let id = segue.identifier {
-            if id == "Category" {
-                let cpvc = segue.destinationViewController as DDCategoryPickerController
-                
-                var categories = NSMutableSet()
-                for r in restaurants {
-                    for c in r.categories {
-                        categories.addObject(c)
-                    }
-                }
-                
-                cpvc.categories = categories.allObjects as [String]
-            }
-        }
+    override func viewDidLayoutSubviews() {
+        let shadowPath = UIBezierPath(rect: infoView.bounds)
+        infoView.layer.masksToBounds = false
+        infoView.layer.shadowColor = UIColor.blackColor().CGColor
+        infoView.layer.shadowOffset = CGSizeMake(0, 0.5)
+        infoView.layer.shadowOpacity = 0.5
+        infoView.layer.shadowPath = shadowPath.CGPath
     }
     
     // MARK: - Game Methods
@@ -109,8 +96,8 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         resetGameState()
         destination = destinationRestaurant
         panCameraTo(destinationRestaurant.city)
-        timer = NSTimer(timeInterval: 1, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
-        NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        restaurantLabel.text = destination!.name
+        popUpInfoView()
         ScoreTracker.sharedInstance.addScore(5, attempts: 3)
         ScoreTracker.sharedInstance.addScore(4, attempts: 10)
         ScoreTracker.sharedInstance.addScore(3, attempts: 2)
@@ -124,7 +111,17 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
     func tickScore(timer: NSTimer) {
         score = Int(Float(score) * 0.99)
     }
-
+    
+    /** Show the info view with an animation */
+    func popUpInfoView() {
+        infoViewBottomConstraint.constant = 0
+        infoView.setNeedsUpdateConstraints()
+        UIView.animateWithDuration(0.8, delay: 0, options: .CurveEaseOut, animations: {
+            [unowned self] in
+            self.infoView.layoutIfNeeded()
+            }, completion: nil)
+    }
+    
     func endGame() {
         let alert = UIAlertController(title: "Congratulations!", message: "You have won after travelling \(distanceFormatter.stringFromDistance(distance)).", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
@@ -151,38 +148,7 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         destination = nil
         score = maxScore
         attempts = 0
-    }
-    
-    // MARK: - Restaurant Methods
-    
-    /** Called when city is selected in DDCityViewController */
-    func getRestaurantsInCity(city: DDCity) {
-        Yelp.restaurantsFromCity(city, completion: {
-            (data: NSData) in
-            Restaurant.restaurantsFromYelpJSON(data, forCity: city, completion: {
-                (restaurants: [Restaurant]) in
-                self.restaurants = restaurants
-                let rand = Int(arc4random_uniform(UInt32(self.restaurants.count)))
-                self.startNewRound(self.restaurants[rand])
-            })
-        })
-    }
-    
-    /** Called when category is selected in DDCategoryPickerController */
-    func getRestaurantsInCategory(cat: String) {
-        var restaurantsInCategory = [Restaurant]()
-        for res in self.restaurants {
-            for c in res.categories {
-                if c == cat {
-                    restaurantsInCategory.append(res)
-                }
-            }
-        }
-        
-        let rand = Int(arc4random_uniform(UInt32(restaurantsInCategory.count)))
-        let restaurant = restaurantsInCategory[rand]
-        
-        self.startNewRound(restaurant)
+        timer?.invalidate()
     }
     
     // MARK: - Routing Methods
@@ -236,35 +202,6 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         return MKMapItem(placemark: MKPlacemark(coordinate: annotation.coordinate, addressDictionary: nil))
     }
     
-    
-    // MARK: - MKMapViewDelegate
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        if overlay is MKPolyline {
-            let polyRenderer = MKPolylineRenderer(overlay: overlay)
-            polyRenderer.lineWidth = 3
-            polyRenderer.strokeColor = UIColor.redColor().colorWithAlphaComponent(0.6)
-            return polyRenderer
-        }
-        return nil
-    }
-    
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("ColourAnnotationView") as? ColourAnnotationView
-        
-        if annotationView == nil {
-            annotationView = ColourAnnotationView(annotation: annotation, reuseIdentifier: "ColourAnnotationView")
-            annotationView!.canShowCallout = true
-            annotationView!.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
-        } else {
-            annotationView!.annotation = annotation
-        }
-        
-        let dist = distanceBetweenPoints(annotation.coordinate, p2: destination!.coordinate)
-        annotationView!.hue = colourGradientFromDistanceRemaining(dist)
-        annotationView!.setNeedsDisplay()
-        return annotationView
-    }
-    
     // MARK: - Gesture Recognizer
     func handleMapTouch(gr: UITapGestureRecognizer) {
         if gr.state == UIGestureRecognizerState.Began && playing {
@@ -288,12 +225,12 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         
     }
     
-
-
+    
+    
     // MARK: - MapView Helpers
     
     /** Animates the camera to the given city */
-    func panCameraTo(city: DDCity) {
+    func panCameraTo(city: City) {
         let camera = city.cameraFromCity()
         mapView.setCamera(camera, animated: true)
     }
@@ -325,5 +262,42 @@ class ViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelega
         let point = addAnnotation(mapItem) as MKPointAnnotation
         point.title = restaurant.name
         return point
+    }
+}
+
+// MARK: - MKMapViewDelegate
+extension ViewController: MKMapViewDelegate {
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if overlay is MKPolyline {
+            let polyRenderer = MKPolylineRenderer(overlay: overlay)
+            polyRenderer.lineWidth = 3
+            polyRenderer.strokeColor = UIColor.redColor().colorWithAlphaComponent(0.6)
+            return polyRenderer
+        }
+        return nil
+    }
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("ColourAnnotationView") as? ColourAnnotationView
+        
+        if annotationView == nil {
+            annotationView = ColourAnnotationView(annotation: annotation, reuseIdentifier: "ColourAnnotationView")
+            annotationView!.canShowCallout = true
+            annotationView!.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        let dist = distanceBetweenPoints(annotation.coordinate, p2: destination!.coordinate)
+        annotationView!.hue = colourGradientFromDistanceRemaining(dist)
+        annotationView!.setNeedsDisplay()
+        return annotationView
+    }
+    
+    func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool) {
+        if playing && timer? == nil {
+            timer = NSTimer(timeInterval: 1.5, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
+            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        }
     }
 }
