@@ -59,6 +59,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yelp" translatesAutoresizingMaskIntoConstraints="NO" id="Pg9-d8-553">
+                                        <rect key="frame" x="291" y="26" width="30" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="8J4-sL-uks"/>
+                                            <constraint firstAttribute="height" constant="16" id="kcU-6k-8zO"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -70,11 +77,13 @@
                                     <constraint firstItem="i8i-Fc-NyM" firstAttribute="centerY" secondItem="XhQ-gc-FQ1" secondAttribute="centerY" id="M1Q-mG-IFN"/>
                                     <constraint firstItem="mLx-ir-fT0" firstAttribute="leading" secondItem="m7m-G7-5Ty" secondAttribute="trailing" constant="14" id="Rzw-4F-GfB"/>
                                     <constraint firstItem="m7m-G7-5Ty" firstAttribute="leading" secondItem="Pz6-1D-lSl" secondAttribute="leading" constant="12" id="VC3-bW-SOr"/>
+                                    <constraint firstAttribute="bottom" secondItem="Pg9-d8-553" secondAttribute="bottom" constant="2" id="dEd-v5-F74"/>
                                     <constraint firstItem="m7m-G7-5Ty" firstAttribute="leading" secondItem="XhQ-gc-FQ1" secondAttribute="leading" id="guY-DO-Xdo"/>
                                     <constraint firstItem="i8i-Fc-NyM" firstAttribute="leading" secondItem="mLx-ir-fT0" secondAttribute="leading" id="hPG-1D-QXC"/>
                                     <constraint firstItem="i8i-Fc-NyM" firstAttribute="leading" secondItem="XhQ-gc-FQ1" secondAttribute="trailing" constant="20" id="jbK-BK-WZg"/>
                                     <constraint firstAttribute="height" constant="44" id="ouC-kf-RuX"/>
                                     <constraint firstItem="F3P-ia-yOM" firstAttribute="top" secondItem="Pz6-1D-lSl" secondAttribute="top" constant="2" id="q8r-NY-6gv"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pg9-d8-553" secondAttribute="trailing" constant="7" id="qCf-ZM-r0p"/>
                                     <constraint firstItem="m7m-G7-5Ty" firstAttribute="top" secondItem="Pz6-1D-lSl" secondAttribute="top" constant="2" id="uMM-uD-KDT"/>
                                     <constraint firstItem="mLx-ir-fT0" firstAttribute="baseline" secondItem="m7m-G7-5Ty" secondAttribute="baseline" id="vho-Fq-xEC"/>
                                 </constraints>
@@ -326,5 +335,6 @@
     </scenes>
     <resources>
         <image name="Leaderboard" width="20" height="22"/>
+        <image name="yelp" width="51" height="27"/>
     </resources>
 </document>
