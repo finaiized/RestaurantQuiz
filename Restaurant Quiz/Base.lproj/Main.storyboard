@@ -21,7 +21,7 @@
                                 <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pz6-1D-lSl">
-                                <rect key="frame" x="-4" y="568" width="328" height="44"/>
+                                <rect key="frame" x="-4" y="524" width="328" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhQ-gc-FQ1">
                                         <rect key="frame" x="12" y="26" width="30" height="14"/>
@@ -35,26 +35,26 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8i-Fc-NyM">
-                                        <rect key="frame" x="62" y="26" width="73" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Dist." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8i-Fc-NyM">
+                                        <rect key="frame" x="62" y="26" width="52" height="14"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000 km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLx-ir-fT0">
-                                        <rect key="frame" x="62" y="2" width="63" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000 km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLx-ir-fT0">
+                                        <rect key="frame" x="62" y="2" width="54" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3P-ia-yOM">
-                                        <rect key="frame" x="143" y="2" width="173" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3P-ia-yOM">
+                                        <rect key="frame" x="124" y="2" width="192" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkz-q7-5hQ">
-                                        <rect key="frame" x="143" y="26" width="90" height="14"/>
+                                        <rect key="frame" x="124" y="26" width="90" height="14"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Wkz-q7-5hQ" firstAttribute="leading" secondItem="i8i-Fc-NyM" secondAttribute="trailing" constant="8" id="6Uu-e1-yPc"/>
+                                    <constraint firstItem="Wkz-q7-5hQ" firstAttribute="leading" secondItem="i8i-Fc-NyM" secondAttribute="trailing" constant="10" id="6Uu-e1-yPc"/>
                                     <constraint firstAttribute="trailing" secondItem="F3P-ia-yOM" secondAttribute="trailing" constant="12" id="B6Y-bL-CGC"/>
                                     <constraint firstItem="Wkz-q7-5hQ" firstAttribute="leading" secondItem="F3P-ia-yOM" secondAttribute="leading" id="EOE-Fg-SbB"/>
                                     <constraint firstItem="XhQ-gc-FQ1" firstAttribute="top" secondItem="m7m-G7-5Ty" secondAttribute="bottom" constant="4" id="EXY-ni-sJz"/>
@@ -105,7 +105,7 @@
                             <constraint firstItem="G46-U1-0a0" firstAttribute="width" secondItem="Pz6-1D-lSl" secondAttribute="width" id="blW-R1-eFz"/>
                             <constraint firstItem="G46-U1-0a0" firstAttribute="leading" secondItem="Pz6-1D-lSl" secondAttribute="leading" id="gOE-Da-dw8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Pz6-1D-lSl" secondAttribute="trailing" constant="-16" id="nhg-o7-g1H"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Pz6-1D-lSl" secondAttribute="bottom" constant="-44" id="yq4-eB-w4Z"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Pz6-1D-lSl" secondAttribute="bottom" id="yq4-eB-w4Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Pz6-1D-lSl" secondAttribute="trailing" constant="-16" id="zBy-UZ-OQc"/>
                         </constraints>
                         <variation key="default">
@@ -130,11 +130,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="distanceDescriptionLabel" destination="i8i-Fc-NyM" id="JE7-zk-891"/>
                         <outlet property="distanceLabel" destination="mLx-ir-fT0" id="Kdf-69-THZ"/>
                         <outlet property="infoView" destination="Pz6-1D-lSl" id="TTK-qv-Wyv"/>
                         <outlet property="infoViewBottomConstraint" destination="yq4-eB-w4Z" id="FxB-i7-YDw"/>
+                        <outlet property="infoViewHeight" destination="ouC-kf-RuX" id="YnQ-Y6-07z"/>
                         <outlet property="mapView" destination="G46-U1-0a0" id="fla-Sw-ANj"/>
+                        <outlet property="restaurantDescriptionLabel" destination="Wkz-q7-5hQ" id="kdu-Ku-FBP"/>
                         <outlet property="restaurantLabel" destination="F3P-ia-yOM" id="TKC-R8-toI"/>
+                        <outlet property="scoreDescriptionLabel" destination="XhQ-gc-FQ1" id="KML-p8-g9w"/>
                         <outlet property="scoreLabel" destination="m7m-G7-5Ty" id="sfL-pS-VdJ"/>
                     </connections>
                 </viewController>

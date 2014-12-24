@@ -19,6 +19,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var infoViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var scoreDescriptionLabel: UILabel!
+    
+    @IBOutlet weak var distanceDescriptionLabel: UILabel!
+    
+    @IBOutlet weak var restaurantDescriptionLabel: UILabel!
+    
+    @IBOutlet weak var infoViewHeight: NSLayoutConstraint!
+    
     // MARK: - Properties
     
     // The distance, from the destination, considered to be close enough
@@ -66,6 +74,8 @@ class ViewController: UIViewController {
         overlays = []
         score = maxScore
         super.init(coder: aDecoder)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setupDynamicText", name: UIContentSizeCategoryDidChangeNotification, object: nil)
     }
     
     override func viewDidLoad() {
@@ -78,7 +88,15 @@ class ViewController: UIViewController {
         self.mapView.addGestureRecognizer(tapRecognizer)
         self.mapView.showsPointsOfInterest = false
         self.navigationController?.navigationBar.tintColor = UIColor(red: 0.204, green: 0.667, blue: 0.863, alpha: 1)
-
+        
+        // Call this once so we can set the bottom constraint before view appears
+        setupDynamicText()
+        infoViewBottomConstraint.constant = -infoViewHeight.constant
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        setupDynamicText()
     }
     
     override func viewDidLayoutSubviews() {
@@ -88,6 +106,30 @@ class ViewController: UIViewController {
         infoView.layer.shadowOffset = CGSizeMake(0, 0.5)
         infoView.layer.shadowOpacity = 0.5
         infoView.layer.shadowPath = shadowPath.CGPath
+    }
+    
+    /** Add support for dynamic text on all UI elements, including related constraints */
+    func setupDynamicText() {
+        let caption2 = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
+        let headline = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        
+        scoreLabel.font = headline
+        distanceLabel.font = headline
+        restaurantLabel.font = headline
+        
+        scoreDescriptionLabel.font = caption2
+        distanceDescriptionLabel.font = caption2
+        restaurantDescriptionLabel.font = caption2
+        
+        // TODO: Make this static?
+        var infoViewHeights: [NSString: CGFloat] = [UIContentSizeCategoryExtraSmall: 40,
+            UIContentSizeCategorySmall: 40, UIContentSizeCategoryMedium: 40,
+            UIContentSizeCategoryLarge: 44, UIContentSizeCategoryExtraLarge: 50,
+            UIContentSizeCategoryExtraExtraLarge: 56, UIContentSizeCategoryExtraExtraExtraLarge: 56]
+        let userPref = UIApplication.sharedApplication().preferredContentSizeCategory
+        if let height = infoViewHeights[userPref] {
+            infoViewHeight.constant = infoViewHeights[userPref]!
+        }
     }
     
     // MARK: - Game Methods
