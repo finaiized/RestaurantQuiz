@@ -9,6 +9,7 @@ This version utilizes many features of iOS, including:
 * UI animations
 * MapKit
 * Dynamic Text
+* Archiving
 
 Credits: 
 
