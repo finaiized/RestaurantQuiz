@@ -8,6 +8,7 @@ This version utilizes many features of iOS, including:
 * Auto Layout
 * UI animations
 * MapKit
+* Dynamic Text
 
 Credits: 
 
