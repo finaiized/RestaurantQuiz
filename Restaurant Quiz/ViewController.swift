@@ -66,6 +66,8 @@ class ViewController: UIViewController {
     
     var timer: NSTimer?
     
+    var fullyRendered = false
+    
     // MARK: - Lifecycle Methods
     required init(coder aDecoder: NSCoder) {
         overlays = []
@@ -139,6 +141,14 @@ class ViewController: UIViewController {
         panCameraTo(destinationRestaurant.city)
         restaurantLabel.text = destination!.name
         popUpInfoView()
+        if fullyRendered {
+            startTimer()
+        }
+    }
+    
+    func startTimer() {
+        timer = NSTimer(timeInterval: 1.5, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
+        NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
     }
     
     func tickScore(timer: NSTimer) {
@@ -167,6 +177,7 @@ class ViewController: UIViewController {
         addAnnotation(destination!)
         ScoreTracker.sharedInstance.addScore(score, attempts: attempts)
         timer?.invalidate()
+        timer = nil
     }
     
     
@@ -327,10 +338,14 @@ extension ViewController: MKMapViewDelegate {
         return annotationView
     }
     
+    func mapViewWillStartLoadingMap(mapView: MKMapView!) {
+        self.fullyRendered = false
+    }
+    
     func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool) {
         if playing && timer? == nil {
-            timer = NSTimer(timeInterval: 1.5, target: self, selector: "tickScore:", userInfo: nil, repeats: true)
-            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+            self.fullyRendered = true
+            startTimer()
         }
     }
 }
