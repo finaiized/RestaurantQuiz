@@ -3,6 +3,10 @@ In CPSC 210, we coded in small parts of a game called "Restaurant Quiz" for Andr
 
 Some liberties have been taken along the way, primarily towards the UI and a few game elements.
 
+<p align="center">
+  <img src="http://i.imgur.com/t6pb2LT.png"/>
+</p>
+
 This version utilizes many features and technologies of iOS, including:
 
 * Storyboards
