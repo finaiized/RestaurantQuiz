@@ -20,11 +20,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var infoViewBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var scoreDescriptionLabel: UILabel!
-    
     @IBOutlet weak var distanceDescriptionLabel: UILabel!
-    
     @IBOutlet weak var restaurantDescriptionLabel: UILabel!
-    
     @IBOutlet weak var infoViewHeight: NSLayoutConstraint!
     
     // MARK: - Properties
